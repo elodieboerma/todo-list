@@ -1,1 +1,1 @@
-# todo-list
+This is a to-do list application/website that saves data to the user's device. It's meant to help me implement my newly learned skills with webpack, JSON, and OOP "SOLID" design principles.
