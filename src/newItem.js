@@ -122,7 +122,7 @@ export function makeNewItem() {
     //makes the actual list item
     addNew.addEventListener("click", function (event) {
         event.preventDefault();
-        const item = {
+        return {
             title: b1input.value,
             description: b2input.value,
             checklist: b3input.value,
