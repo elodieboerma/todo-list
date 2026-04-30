@@ -109,13 +109,23 @@ export default function () {
     box6.append(b6label,b6input);
 
     //button to create list item
-    let create = document.createElement("input");
-    create.type = "submit";
-    create.id = "createButton";
-    create.name = "createButton";
-    create.value = "Create";
+    let addNew = document.createElement("input");
+    addNew.type = "submit";
+    addNew.id = "addNewButton";
+    addNew.name = "addNewButton";
+    addNew.value = "Create";
+    //makes the actual list item
+    addNew.addEventListener("click", function (event) {
+        event.preventDefault();
+        return {
+            title: title.value,
+            description: description.value,
+            checklist: checklist.value,
+            dueDate: dueDate.value,
+            priority: priority.value,
+            projects: projects.value
+        };
+    });
 
-    form.append(box1,box2,box3,box4,box5,box6,create);
-    /* not sure if this is the right way to transfer the actual data */
-    return form;
+    form.append(box1,box2,box3,box4,box5,box6,addNew);
 }

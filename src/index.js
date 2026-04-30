@@ -5,7 +5,13 @@ export let projects = [];
 
 const create = document.getElementById("create");
 
-create.addEventListener("click", () => {
+function addItemToProject() {
     let listItem = addNew();
-    projects.appendChild(listItem);
+    listItem.id = crypto.randomUUID();
+    projects.push(listItem);
+}
+
+create.addEventListener("click", (event) => {
+    event.preventDefault();
+    addItemToProject();
 })
