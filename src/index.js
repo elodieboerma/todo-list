@@ -6,5 +6,6 @@ export let projects = [];
 const create = document.getElementById("create");
 
 create.addEventListener("click", () => {
-    addNew();
+    let listItem = addNew();
+    projects.appendChild(listItem);
 })

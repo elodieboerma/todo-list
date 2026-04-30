@@ -1,9 +1,8 @@
 import {projects} from "./index.js";
 
 const form = document.getElementById("form");
-const defaultProject = document.getElementById("defaultProject");
 
-export function addNew() {
+export default function () {
     // list item title
     let box1 = document.createElement("div");
     let b1label = document.createElement("label");
@@ -100,11 +99,15 @@ export function addNew() {
     b6input.type = "select";
     //figures out what the project options should be in the dropdown
     for (i in projects) {
+        i.appendChild(/*listItem*/);
         let option;
         option.textContent = i.toString();
-        defaultProject.appendChild(option);
     };
     box6.append(b6label,b6input);
 
     form.append(box1,box2,box3,box4,box5,box6);
+    /* not sure if this is the right way to transfer the actual data */
+    return form;
 }
+
+//name, value for radio; name is shared, value is individual
