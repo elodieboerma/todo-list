@@ -100,16 +100,16 @@ export function makeNewItem() {
     let b6label = document.createElement("label");
     b6label.for = "project";
     b6label.textContent = "Project";
-    let b6input = document.createElement("input");
+    let b6input = document.createElement("select");
     b6input.id = "project";
     b6input.name = "project";
     b6input.type = "select";
     b6input.required = true;
     //figures out what the project options should be in the dropdown
     for (i in projectList) {
-        i.appendChild(/*listItem*/);
-        let option;
+        let option = document.createElement("option");
         option.textContent = i.toString();
+        b6input.appendChild(option);
     };
     box6.append(b6label,b6input);
 
