@@ -108,7 +108,14 @@ export default function () {
     };
     box6.append(b6label,b6input);
 
-    form.append(box1,box2,box3,box4,box5,box6);
+    //button to create list item
+    let create = document.createElement("input");
+    create.type = "submit";
+    create.id = "createButton";
+    create.name = "createButton";
+    create.value = "Create";
+
+    form.append(box1,box2,box3,box4,box5,box6,create);
     /* not sure if this is the right way to transfer the actual data */
     return form;
 }
