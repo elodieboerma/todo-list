@@ -1,4 +1,5 @@
 const form = document.getElementById("form");
+const defaultProject = document.getElementById("defaultProject");
 
 export default function () {
     // list item title
@@ -17,7 +18,7 @@ export default function () {
     let box2 = document.createElement("div");
     let b2label = document.createElement("label");
     b2label.for = "description";
-    b1label.textContent = "Description";
+    b2label.textContent = "Description";
     let b2input = document.createElement("input");
     b2input.id = "description";
     b2input.name = "description";
@@ -26,19 +27,32 @@ export default function () {
     b2input.cols = "50";
     box2.append(b2label,b2input);
 
-    // list item due date
+    // list item checklist
     let box3 = document.createElement("div");
     let b3label = document.createElement("label");
-    b3label.for = "dueDate";
-    b3label.textContent = "Due date";
+    b3label.for = "checklist";
+    b3label.textContent = "Checklist";
     let b3input = document.createElement("input");
-    b3input.id = "dueDate";
-    b3input.name = "dueDate";
-    b3input.type = "date";
+    b3input.id = "checklist";
+    b3input.name = "checklist";
+    b3input.type = "textarea";
+    b3input.rows = "10";
+    b3input.cols = "50";
     box3.append(b3label,b3input);
 
-    // list item priority
+    // list item due date
     let box4 = document.createElement("div");
+    let b4label = document.createElement("label");
+    b4label.for = "dueDate";
+    b4label.textContent = "Due date";
+    let b4input = document.createElement("input");
+    b4input.id = "dueDate";
+    b4input.name = "dueDate";
+    b4input.type = "date";
+    box4.append(b4label,b4input);
+
+    // list item priority
+    let box5 = document.createElement("div");
     let legend = document.createElement("legend");
     legend.textContent = "Priority";
     //ASAP
@@ -71,7 +85,24 @@ export default function () {
     input3.name = "sometime";
     input3.type = "radio";
     num3.append(label3,input3);
-    box4.append(legend,num1,num2,num3);
-}
+    box5.append(legend,num1,num2,num3);
 
-// item w/ checklist, category/color
+    //folder it should be in
+    let box6 = document.createElement("div");
+    let b6label = document.createElement("label");
+    b6label.for = "folder";
+    b6label.textContent = "Folder";
+    let b6input = document.createElement("input");
+    b6input.id = "folder";
+    b6input.name = "folder";
+    b6input.type = "select";
+    /* not sure about this working correctly */
+    for (i in folders) {
+        let option;
+        option.textContent = i.toString();
+        defaultProject.appendChild(option);
+    };
+    box6.append(b6label,b6input);
+
+    form.append(box1,box2,box3,box4,box5,box6);
+}
