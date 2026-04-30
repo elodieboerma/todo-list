@@ -1,12 +1,34 @@
 import "./styles.css";
 import addNew from "./newItem.js";
+import addNewProject from "./newProject.js";
 
 export let projectList = [];
 
 const create = document.getElementById("create");
 const newProject = document.getElementById("newProject");
-const defaultProject = document.getElementById("defaultProject");
+const listContainer = document.getElementById("list");
 
+const defaultProject = document.getElementById("defaultProject");
+/* not sure about title thingy etc for this one*/
+defaultProject.textContent = "Important";
+projectList.push(defaultProject)
+listContainer.appendChild(projectList);
+
+
+// make a new project and add it to the list of projects
+function makeNewProject() {
+    let project = addNewProject();
+    project.id = crypto.randomUUID();
+    projectList.push(project);
+}
+
+newProject.addEventListener("click", (event) => {
+    event.preventDefault();
+    makeNewProject();
+})
+
+
+// add new list item to a project
 function addItemToProject() {
     let listItem = addNew();
     listItem.id = crypto.randomUUID();
