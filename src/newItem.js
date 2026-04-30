@@ -71,17 +71,7 @@ export default function () {
     input3.name = "sometime";
     input3.type = "radio";
     num3.append(label3,input3);
-    //optional
-    let num4 = document.createElement("div");
-    let label4 = document.createElement("label");
-    label4.for = "optional";
-    label4.textContent = "Optional";
-    let input4 = document.createElement("input");
-    input4.id = "optional";
-    input4.name = "optional";
-    input4.type = "radio";
-    num4.append(label4,input4);
-    box4.append(legend,num1,num2,num3,num4);
+    box4.append(legend,num1,num2,num3);
 }
 
 // item w/ checklist, category/color
