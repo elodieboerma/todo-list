@@ -90,11 +90,11 @@ export function addNew() {
     //folder it should be in
     let box6 = document.createElement("div");
     let b6label = document.createElement("label");
-    b6label.for = "folder";
-    b6label.textContent = "Folder";
+    b6label.for = "project";
+    b6label.textContent = "Project";
     let b6input = document.createElement("input");
-    b6input.id = "folder";
-    b6input.name = "folder";
+    b6input.id = "project";
+    b6input.name = "project";
     b6input.type = "select";
     /* not sure about this working correctly */
     for (i in folders) {
