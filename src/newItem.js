@@ -51,6 +51,7 @@ export function makeNewItem() {
     b4input.id = "dueDate";
     b4input.name = "dueDate";
     b4input.type = "date";
+    b4input.required = true;
     box4.append(b4label,b4input);
 
     // list item priority
@@ -90,6 +91,8 @@ export function makeNewItem() {
     input3.value = "sometime";
     input3.type = "radio";
     num3.append(label3,input3);
+    /* not sure if this is correct */
+    box5.required = true;
     box5.append(legend,num1,num2,num3);
 
     //folder it should be in
@@ -101,6 +104,7 @@ export function makeNewItem() {
     b6input.id = "project";
     b6input.name = "project";
     b6input.type = "select";
+    b6input.required = true;
     //figures out what the project options should be in the dropdown
     for (i in projectList) {
         i.appendChild(/*listItem*/);
