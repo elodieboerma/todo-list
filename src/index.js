@@ -1,7 +1,7 @@
 import "./styles.css";
 import addNew from "./newItem.js";
 
-let projects = [];
+export let projects = [];
 
 const create = document.getElementById("create");
 

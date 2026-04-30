@@ -1,3 +1,5 @@
+import {projects} from "./index.js";
+
 const form = document.getElementById("form");
 const defaultProject = document.getElementById("defaultProject");
 
@@ -96,8 +98,8 @@ export function addNew() {
     b6input.id = "project";
     b6input.name = "project";
     b6input.type = "select";
-    /* not sure about this working correctly */
-    for (i in folders) {
+    //figures out what the project options should be in the dropdown
+    for (i in projects) {
         let option;
         option.textContent = i.toString();
         defaultProject.appendChild(option);
