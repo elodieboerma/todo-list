@@ -3,7 +3,7 @@ import {projectList} from "./index.js";
 const form = document.getElementById("form");
 
 
-export function makeNewItem() {
+export default function () {
     // list item title
     let box1 = document.createElement("div");
     let b1label = document.createElement("label");
