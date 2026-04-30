@@ -1,7 +1,7 @@
 const form = document.getElementById("form");
 const defaultProject = document.getElementById("defaultProject");
 
-export default function () {
+export function addNew() {
     // list item title
     let box1 = document.createElement("div");
     let b1label = document.createElement("label");
