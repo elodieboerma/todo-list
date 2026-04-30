@@ -4,6 +4,7 @@ import addNew from "./newItem.js";
 export let projectList = [];
 
 const create = document.getElementById("create");
+const newProject = document.getElementById("newProject");
 const defaultProject = document.getElementById("defaultProject");
 
 function addItemToProject() {
