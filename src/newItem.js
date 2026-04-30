@@ -117,13 +117,13 @@ export default function () {
     //makes the actual list item
     addNew.addEventListener("click", function (event) {
         event.preventDefault();
-        return {
-            title: title.value,
-            description: description.value,
-            checklist: checklist.value,
-            dueDate: dueDate.value,
-            priority: priority.value,
-            projects: projects.value
+        const item = {
+            title: b1input.value,
+            description: b2input.value,
+            checklist: b3input.value,
+            dueDate: b4input.value,
+            priority: selectedPriority,
+            project: b6input.value
         };
     });
 
