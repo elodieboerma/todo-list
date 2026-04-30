@@ -63,7 +63,8 @@ export default function () {
     label1.textContent = "ASAP";
     let input1 = document.createElement("input");
     input1.id = "asap";
-    input1.name = "asap";
+    input1.name = "priority";
+    input1.value = "asap";
     input1.type = "radio";
     num1.append(label1,input1);
     //soon, sometime, optional
@@ -73,7 +74,8 @@ export default function () {
     label2.textContent = "Soon";
     let input2 = document.createElement("input");
     input2.id = "soon";
-    input2.name = "soon";
+    input2.name = "priority";
+    input2.value = "soon";
     input2.type = "radio";
     num2.append(label2,input2);
     //optional
@@ -83,7 +85,8 @@ export default function () {
     label3.textContent = "Sometime";
     let input3 = document.createElement("input");
     input3.id = "sometime";
-    input3.name = "sometime";
+    input3.name = "priority";
+    input3.value = "sometime";
     input3.type = "radio";
     num3.append(label3,input3);
     box5.append(legend,num1,num2,num3);
@@ -109,5 +112,3 @@ export default function () {
     /* not sure if this is the right way to transfer the actual data */
     return form;
 }
-
-//name, value for radio; name is shared, value is individual
