@@ -40,6 +40,38 @@ function addItem(title,description,checklist,dueDate,priority,project) {
         item.id = crypto.randomUUID();
         // where project is the desired project in the list
         projectList.project.push(item);
+
+
+        const itemDiv = document.createElement("div");
+        itemDiv.id = title;
+        itemDiv.textContent = title;
+
+        const itemDescription = document.createElement("p");
+        itemDescription.id = description;
+        itemDescription.textContent = description;
+        itemDiv.appendChild(itemDescription);
+
+        const itemChecklist = document.createElement("p");
+        itemChecklist.id = checklist;
+        itemChecklist.textContent = checklist;
+        itemDiv.appendChild(itemChecklist);
+
+        const itemDueDate = document.createElement("p");
+        itemDueDate.id = dueDate;
+        itemDueDate.textContent = dueDate;
+        itemDiv.appendChild(itemDueDate);
+
+        const itemPriority = document.createElement("p");
+        itemPriority.id = priority;
+        itemPriority.textContent = priority;
+        itemDiv.appendChild(itemPriority);
+
+        const itemProject = document.createElement("p");
+        itemProject.id = project;
+        itemProject.textContent = project;
+        itemDiv.appendChild(itemProject);
+
+        listContainer.appendChild(itemDiv);
     }
 
 
@@ -176,5 +208,5 @@ export default function () {
             b6input.value
         );
     });
-    
+
 }
