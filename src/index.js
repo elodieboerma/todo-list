@@ -17,15 +17,16 @@ listContainer.appendChild(projectList);
 
 
 // make a new project and add it to the list of projects
-function makeNewProject() {
+/*function makeNewProject() {
     let project = addNewProject();
     project.id = crypto.randomUUID();
     projectList.push(project);
-}
+}*/
 
 newProject.addEventListener("click", (event) => {
     event.preventDefault();
-    makeNewProject();
+    addNewProject();
+    //makeNewProject();
 })
 
 
@@ -34,7 +35,7 @@ newProject.addEventListener("click", (event) => {
 function addItemToProject() {
     let listItem = addNew();
     listItem.id = crypto.randomUUID();
-    project.push(listItem.project);
+    projectList.push(listItem.project);
 }
 
 create.addEventListener("click", (event) => {

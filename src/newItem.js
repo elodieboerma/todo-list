@@ -119,7 +119,8 @@ export default function () {
     addNew.id = "addNewButton";
     addNew.name = "addNewButton";
     addNew.value = "Create";
-    //makes the actual list item
+    form.append(box1,box2,box3,box4,box5,box6,addNew);
+    
     addNew.addEventListener("click", function (event) {
         event.preventDefault();
         return {
@@ -131,6 +132,4 @@ export default function () {
             project: b6input.value
         };
     });
-
-    form.append(box1,box2,box3,box4,box5,box6,addNew);
 }
