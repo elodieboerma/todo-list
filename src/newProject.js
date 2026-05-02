@@ -25,7 +25,10 @@ function addProjectToList(projectName) {
     let project = new Project(projectName);
     project.id = crypto.randomUUID();
     projectList.push(project);
-    listContainer.appendChild(project);
+    const projectDiv = document.createElement("div");
+    projectDiv.id = projectName;
+    projectDiv.textContent = projectName;
+    listContainer.appendChild(projectDiv);
 }
 
 
