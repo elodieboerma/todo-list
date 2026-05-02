@@ -1,6 +1,7 @@
 import {projectList} from "./index.js";
 
 const form = document.getElementById("form");
+const listContainer = document.getElementById("list");
 
 
 export default function () {
@@ -25,6 +26,7 @@ export default function () {
         let project = new Project(projectName);
         project.id = crypto.randomUUID();
         projectList.push(project);
+        listContainer.appendChild(project);
     }
 
 
