@@ -41,7 +41,7 @@ function addItem(title,description,checklist,dueDate,priority,project) {
         // where project is the desired project in the list
         projectList.project.push(item);
 
-
+        // actually adding it to dom tree
         const itemDiv = document.createElement("div");
         itemDiv.id = title;
         itemDiv.textContent = title;
