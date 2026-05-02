@@ -59,7 +59,7 @@ export default function () {
     let legend = document.createElement("legend");
     legend.textContent = "Priority";
     //ASAP
-    let num1 = document.createElement("div");
+    let op1 = document.createElement("div");
     let label1 = document.createElement("label");
     label1.for = "asap";
     label1.textContent = "ASAP";
@@ -68,9 +68,9 @@ export default function () {
     input1.name = "priority";
     input1.value = "asap";
     input1.type = "radio";
-    num1.append(label1,input1);
+    op1.append(label1,input1);
     //soon, sometime, optional
-    let num2 = document.createElement("div");
+    let op2 = document.createElement("div");
     let label2 = document.createElement("label");
     label2.for = "soon";
     label2.textContent = "Soon";
@@ -79,9 +79,9 @@ export default function () {
     input2.name = "priority";
     input2.value = "soon";
     input2.type = "radio";
-    num2.append(label2,input2);
+    op2.append(label2,input2);
     //optional
-    let num3 = document.createElement("div");
+    let op3 = document.createElement("div");
     let label3 = document.createElement("label");
     label3.for = "sometime";
     label3.textContent = "Sometime";
@@ -90,10 +90,10 @@ export default function () {
     input3.name = "priority";
     input3.value = "sometime";
     input3.type = "radio";
-    num3.append(label3,input3);
+    op3.append(label3,input3);
     /* not sure if this is correct */
     box5.required = true;
-    box5.append(legend,num1,num2,num3);
+    box5.append(legend,op1,op2,op3);
 
     //folder it should be in
     let box6 = document.createElement("div");
