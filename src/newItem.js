@@ -156,7 +156,6 @@ export default function () {
     function addItem(title,description,checklist,dueDate,priority,project) {
         let item = new Item(title,description,checklist,dueDate,priority,project);
         item.id = crypto.randomUUID();
-        //itemsInProject.push(item);
         // where project is the desired project in the list
         projectList.project.push(item);
     }
