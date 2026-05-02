@@ -138,7 +138,7 @@ export default function () {
     b6input.type = "select";
     b6input.required = true;
     //figures out what the project options should be in the dropdown
-    for (i in projectList) {
+    for (let i in projectList) {
         let option = document.createElement("option");
         option.textContent = projectList[i].toString();
         b6input.appendChild(option);
