@@ -140,7 +140,7 @@ export default function () {
     //figures out what the project options should be in the dropdown
     for (i in projectList) {
         let option = document.createElement("option");
-        option.textContent = i.toString();
+        option.textContent = projectList[i].toString();
         b6input.appendChild(option);
     };
     box6.append(b6label,b6input);
