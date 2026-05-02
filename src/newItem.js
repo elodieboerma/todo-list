@@ -3,8 +3,7 @@ import {projectList} from "./index.js";
 const form = document.getElementById("form");
 
 
-export default function () {
-        class Item {
+class Item {
     constructor (title,description,checklist,dueDate,priority,project) {
         this.title = title;
         this.description = description;
@@ -25,16 +24,28 @@ export default function () {
         }
     }
 
-        set itemObject({title,description,checklist,dueDate,priority,project}) {
-            this.title = title;
-            this.description = description;
-            this.checklist = checklist;
-            this.dueDate = dueDate;
-            this.priority = priority;
-            this.project = project;
-        }
+    set itemObject({title,description,checklist,dueDate,priority,project}) {
+        this.title = title;
+        this.description = description;
+        this.checklist = checklist;
+        this.dueDate = dueDate;
+        this.priority = priority;
+        this.project = project;
+    }
+}
+
+
+function addItem(title,description,checklist,dueDate,priority,project) {
+        let item = new Item(title,description,checklist,dueDate,priority,project);
+        item.id = crypto.randomUUID();
+        // where project is the desired project in the list
+        projectList.project.push(item);
     }
 
+
+
+
+export default function () {
 
     // list item title
     let box1 = document.createElement("div");
@@ -153,12 +164,6 @@ export default function () {
     addNew.value = "Create";
     form.append(box1,box2,box3,box4,box5,box6,addNew);
 
-    function addItem(title,description,checklist,dueDate,priority,project) {
-        let item = new Item(title,description,checklist,dueDate,priority,project);
-        item.id = crypto.randomUUID();
-        // where project is the desired project in the list
-        projectList.project.push(item);
-    }
 
     addNew.addEventListener("click", function (event) {
         event.preventDefault();
@@ -171,4 +176,5 @@ export default function () {
             b6input.value
         );
     });
+    
 }

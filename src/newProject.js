@@ -4,8 +4,7 @@ const form = document.getElementById("form");
 const listContainer = document.getElementById("list");
 
 
-export default function () {
-    class Project {
+class Project {
     constructor (projectName) {
         this.projectName = projectName;
     }
@@ -19,17 +18,22 @@ export default function () {
         set projectObject({projectName}) {
             this.projectName = projectName;
         }
-    }
+}
 
 
-    function addProjectToList(projectName) {
-        let project = new Project(projectName);
-        project.id = crypto.randomUUID();
-        projectList.push(project);
-        listContainer.appendChild(project);
-    }
+function addProjectToList(projectName) {
+    let project = new Project(projectName);
+    project.id = crypto.randomUUID();
+    projectList.push(project);
+    listContainer.appendChild(project);
+}
 
 
+
+
+export default function () {
+
+    //project name
     let box = document.createElement("div");
     let label = document.createElement("label");
     label.for = "name";
@@ -53,4 +57,5 @@ export default function () {
         event.preventDefault();
         addProjectToList(input.value);
     });
+
 }
