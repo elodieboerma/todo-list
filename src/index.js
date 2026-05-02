@@ -8,8 +8,8 @@ const create = document.getElementById("create");
 const newProject = document.getElementById("newProject");
 const listContainer = document.getElementById("list");
 
-const defaultProject = document.getElementById("defaultProject");
-/* not sure about title thingy etc for this one*/
+const defaultProject = document.createElement("div");
+defaultProject.id = "defaultProject";
 defaultProject.textContent = "Important";
 projectList.push(defaultProject)
 listContainer.appendChild(projectList);
