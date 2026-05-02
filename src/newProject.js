@@ -25,5 +25,5 @@ export default function () {
         return input.value;
     });
 
-    form.appendChild(box,addNewProject);
+    form.append(box,addNewProject);
 }
