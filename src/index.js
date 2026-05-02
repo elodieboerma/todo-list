@@ -15,6 +15,7 @@ projectList.push(defaultProject)
 listContainer.appendChild(projectList);
 
 
+
 // make a new project and add it to the list of projects
 function makeNewProject() {
     let project = addNewProject();
@@ -26,6 +27,7 @@ newProject.addEventListener("click", (event) => {
     event.preventDefault();
     makeNewProject();
 })
+
 
 
 // add new list item to a project

@@ -11,7 +11,7 @@ export default function () {
     input.name = "name";
     input.type = "text";
     input.required = true;
-    box.append(b1label,b1input);
+    box.append(label,input);
 
     //button to create list item
     let addNewProject = document.createElement("input");
