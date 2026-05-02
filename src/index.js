@@ -32,13 +32,14 @@ newProject.addEventListener("click", (event) => {
 
 
 // add new list item to a project
-function addItemToProject() {
+/*function addItemToProject() {
     let listItem = addNew();
     listItem.id = crypto.randomUUID();
     projectList.push(listItem.project);
-}
+}*/
 
 create.addEventListener("click", (event) => {
     event.preventDefault();
-    addItemToProject();
+    addNew();
+    //addItemToProject();
 })

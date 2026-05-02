@@ -4,6 +4,38 @@ const form = document.getElementById("form");
 
 
 export default function () {
+        class Item {
+    constructor (title,description,checklist,dueDate,priority,project) {
+        this.title = title;
+        this.description = description;
+        this.checklist = checklist;
+        this.dueDate = dueDate;
+        this.priority = priority;
+        this.project = project;
+    }
+
+    get itemObject() {
+        return {
+            title: this.title,
+            description: this.description,
+            checklist: this.checklist,
+            dueDate: this.dueDate,
+            priority: this.priority,
+            project: this.project,
+        }
+    }
+
+        set itemObject({title,description,checklist,dueDate,priority,project}) {
+            this.title = title;
+            this.description = description;
+            this.checklist = checklist;
+            this.dueDate = dueDate;
+            this.priority = priority;
+            this.project = project;
+        }
+    }
+
+
     // list item title
     let box1 = document.createElement("div");
     let b1label = document.createElement("label");
@@ -120,16 +152,24 @@ export default function () {
     addNew.name = "addNewButton";
     addNew.value = "Create";
     form.append(box1,box2,box3,box4,box5,box6,addNew);
-    
+
+    function addItem(title,description,checklist,dueDate,priority,project) {
+        let item = new Item(title,description,checklist,dueDate,priority,project);
+        item.id = crypto.randomUUID();
+        //itemsInProject.push(item);
+        // where project is the desired project in the list
+        projectList.project.push(item);
+    }
+
     addNew.addEventListener("click", function (event) {
         event.preventDefault();
-        return {
-            title: b1input.value,
-            description: b2input.value,
-            checklist: b3input.value,
-            dueDate: b4input.value,
-            priority: selectedPriority,
-            project: b6input.value
-        };
+        addItem (
+            b1input.value,
+            b2input.value,
+            b3input.value,
+            b4input.value,
+            selectedPriority,
+            b6input.value
+        );
     });
 }
