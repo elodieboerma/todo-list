@@ -33,10 +33,6 @@ function addProjectToList(projectName) {
     const projectDiv = document.createElement("div");
     projectDiv.id = projectName;
     projectDiv.textContent = projectName;
-    /*const arrayDiv = document.createElement("div");
-    arrayDiv.id = "itemsArray";
-    arrayDiv.textContent = project.itemsArray;
-    projectDiv.appendChild(arrayDiv);*/
     listContainer.appendChild(projectDiv);
 }
 

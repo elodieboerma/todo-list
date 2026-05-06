@@ -40,7 +40,7 @@ function addItem(title,description,checklist,dueDate,priority,project) {
         let item = new Item(title,description,checklist,dueDate,priority,project);
         item.id = crypto.randomUUID();
         // where project is the desired project in the list
-        //search for project by name in projectList, if found then the line below
+        //search for project by name in projectList, if found then add to projectList
         let projectFound = projectList.find(p =>
             p.projectName === project
         );
@@ -73,24 +73,9 @@ function addItem(title,description,checklist,dueDate,priority,project) {
         itemPriority.textContent = priority;
         itemDiv.appendChild(itemPriority);
 
-        /*const itemProject = document.createElement("p");
-        itemProject.id = project;
-        itemProject.textContent = project;
-        itemDiv.appendChild(itemProject);*/
-
-        //get the project by project name property and then append the item
-        // to that project's itemsArray
-        /*let projectObjectFound = projectList.find(p =>
-            p.projectName === project
-        );
-        if (projectFound) {
-            projectObjectFound.itemsArray.push(item);
-        };*/
+        //get the project by project name property and then append the item to that project's itemsArray
         let projectDiv = document.getElementById(project);
-        /*let itemsArray = document.getElementById("itemsArray");
-        projectObject.itemsArray.appendChild(itemDiv);*/
         projectDiv.appendChild(itemDiv);
-        //listContainer.appendChild(itemDiv);
     }
 
 
@@ -185,8 +170,6 @@ export default function () {
     input3.value = "sometime";
     input3.type = "radio";
     op3.append(label3,input3);
-    /* not sure if this is correct */
-    //need to append options to a radio tag and then radio to box5
     box5.required = true;
     box5.append(legend,op1,op2,op3);
     let selectedPriority = box5.value;
