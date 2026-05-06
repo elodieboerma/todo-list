@@ -39,7 +39,8 @@ function addItem(title,description,checklist,dueDate,priority,project) {
         let item = new Item(title,description,checklist,dueDate,priority,project);
         item.id = crypto.randomUUID();
         // where project is the desired project in the list
-        projectList.project.push(item);
+        //projectList.project.push(item);
+        project.push(item);
 
         // actually adding it to dom tree
         const itemDiv = document.createElement("div");
@@ -133,7 +134,7 @@ export default function () {
     let box5 = document.createElement("div");
     let legend = document.createElement("legend");
     legend.textContent = "Priority";
-    //ASAP
+    //asap
     let op1 = document.createElement("div");
     let label1 = document.createElement("label");
     label1.for = "asap";
@@ -144,7 +145,7 @@ export default function () {
     input1.value = "asap";
     input1.type = "radio";
     op1.append(label1,input1);
-    //soon, sometime, optional
+    //soon
     let op2 = document.createElement("div");
     let label2 = document.createElement("label");
     label2.for = "soon";
@@ -169,8 +170,9 @@ export default function () {
     /* not sure if this is correct */
     box5.required = true;
     box5.append(legend,op1,op2,op3);
+    let selectedPriority = box5.value;
 
-    //folder it should be in
+    //project it should be in
     let box6 = document.createElement("div");
     let b6label = document.createElement("label");
     b6label.for = "project";
@@ -187,7 +189,6 @@ export default function () {
         b6input.appendChild(option);
     };
     box6.append(b6label,b6input);
-    let selectedPriority = b6input.value;
 
     //button to create list item
     let addNew = document.createElement("input");

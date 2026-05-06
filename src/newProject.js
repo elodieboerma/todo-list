@@ -7,16 +7,20 @@ const listContainer = document.getElementById("list");
 class Project {
     constructor (projectName) {
         this.projectName = projectName;
+        //array to store to-dos
+        this.itemsArray = [];
     }
 
     get projectObject() {
         return {
             projectName: this.projectName,
+            itemsArray: this.itemsArray,
         }
     }
 
         set projectObject({projectName}) {
             this.projectName = projectName;
+            this.itemsArray = itemsArray;
         }
 }
 
@@ -29,6 +33,9 @@ function addProjectToList(projectName) {
     const projectDiv = document.createElement("div");
     projectDiv.id = projectName;
     projectDiv.textContent = projectName;
+    const arrayDiv = document.createElement("div");
+    arrayDiv.id = itemsArray;
+    arrayDiv.textContent = project.itemsArray;
     listContainer.appendChild(projectDiv);
 }
 
