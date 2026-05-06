@@ -178,15 +178,16 @@ export default function () {
     let b6input = document.createElement("select");
     b6input.id = "project";
     b6input.name = "project";
-    b6input.type = "select";
     b6input.required = true;
     //figures out what the project options should be in the dropdown
     for (let i in projectList) {
         let option = document.createElement("option");
-        option.textContent = projectList[i].toString();
+        option.value = projectList[i].toString();
+        option.textContent = option.value.toUpperCase();
         b6input.appendChild(option);
     };
     box6.append(b6label,b6input);
+    let selectedPriority = b6input.value;
 
     //button to create list item
     let addNew = document.createElement("input");
