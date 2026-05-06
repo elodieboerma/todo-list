@@ -4,7 +4,7 @@ const form = document.getElementById("form");
 const listContainer = document.getElementById("list");
 
 
-class Project {
+export class Project {
     constructor (projectName) {
         this.projectName = projectName;
         //array to store to-dos
@@ -33,9 +33,10 @@ function addProjectToList(projectName) {
     const projectDiv = document.createElement("div");
     projectDiv.id = projectName;
     projectDiv.textContent = projectName;
-    const arrayDiv = document.createElement("div");
-    arrayDiv.id = itemsArray;
+    /*const arrayDiv = document.createElement("div");
+    arrayDiv.id = "itemsArray";
     arrayDiv.textContent = project.itemsArray;
+    projectDiv.appendChild(arrayDiv);*/
     listContainer.appendChild(projectDiv);
 }
 

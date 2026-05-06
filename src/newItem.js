@@ -4,13 +4,14 @@ const form = document.getElementById("form");
 
 
 class Item {
-    constructor (title,description,checklist,dueDate,priority,project) {
+    constructor (title,description,checklist,dueDate,priority/*,project*/) {
         this.title = title;
         this.description = description;
         this.checklist = checklist;
         this.dueDate = dueDate;
         this.priority = priority;
-        this.project = project;
+        //this.project = project;
+        this.project;
     }
 
     get itemObject() {
@@ -24,7 +25,7 @@ class Item {
         }
     }
 
-    set itemObject({title,description,checklist,dueDate,priority,project}) {
+    set itemObject({title,description,checklist,dueDate,priority/*,project*/}) {
         this.title = title;
         this.description = description;
         this.checklist = checklist;
@@ -39,8 +40,13 @@ function addItem(title,description,checklist,dueDate,priority,project) {
         let item = new Item(title,description,checklist,dueDate,priority,project);
         item.id = crypto.randomUUID();
         // where project is the desired project in the list
-        //projectList.project.push(item);
-        project.push(item);
+        //search for project by name in projectList, if found then the line below
+        let projectFound = projectList.find(p =>
+            p.projectName === project
+        );
+        if (projectFound) {
+            projectFound.itemsArray.push(item);
+        };
 
         // actually adding it to dom tree
         const itemDiv = document.createElement("div");
@@ -67,12 +73,24 @@ function addItem(title,description,checklist,dueDate,priority,project) {
         itemPriority.textContent = priority;
         itemDiv.appendChild(itemPriority);
 
-        const itemProject = document.createElement("p");
+        /*const itemProject = document.createElement("p");
         itemProject.id = project;
         itemProject.textContent = project;
-        itemDiv.appendChild(itemProject);
+        itemDiv.appendChild(itemProject);*/
 
-        listContainer.appendChild(itemDiv);
+        //get the project by project name property and then append the item
+        // to that project's itemsArray
+        /*let projectObjectFound = projectList.find(p =>
+            p.projectName === project
+        );
+        if (projectFound) {
+            projectObjectFound.itemsArray.push(item);
+        };*/
+        let projectDiv = document.getElementById(project);
+        /*let itemsArray = document.getElementById("itemsArray");
+        projectObject.itemsArray.appendChild(itemDiv);*/
+        projectDiv.appendChild(itemDiv);
+        //listContainer.appendChild(itemDiv);
     }
 
 
@@ -168,6 +186,7 @@ export default function () {
     input3.type = "radio";
     op3.append(label3,input3);
     /* not sure if this is correct */
+    //need to append options to a radio tag and then radio to box5
     box5.required = true;
     box5.append(legend,op1,op2,op3);
     let selectedPriority = box5.value;
@@ -181,11 +200,11 @@ export default function () {
     b6input.id = "project";
     b6input.name = "project";
     b6input.required = true;
-    //figures out what the project options should be in the dropdown
+    //determines the project options in the dropdown
     for (let i in projectList) {
         let option = document.createElement("option");
-        option.value = projectList[i].toString();
-        option.textContent = option.value.toUpperCase();
+        option.value = projectList[i].projectName;
+        option.textContent = projectList[i].projectName;
         b6input.appendChild(option);
     };
     box6.append(b6label,b6input);

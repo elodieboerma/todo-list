@@ -1,6 +1,6 @@
 import "./styles.css";
 import addNew from "./newItem.js";
-import addNewProject from "./newProject.js";
+import addNewProject, {Project} from "./newProject.js";
 
 export let projectList = [];
 
@@ -8,10 +8,13 @@ const create = document.getElementById("create");
 const newProject = document.getElementById("newProject");
 const listContainer = document.getElementById("list");
 
-const defaultProject = document.createElement("div");
-defaultProject.id = "defaultProject";
-defaultProject.textContent = "Important";
-listContainer.appendChild(defaultProject);
+const defaultProject = new Project("Important");
+projectList.push(defaultProject);
+
+const defaultProjectDiv = document.createElement("div");
+defaultProjectDiv.id = "important";
+defaultProjectDiv.textContent = "Important";
+listContainer.appendChild(defaultProjectDiv);
 
 
 
