@@ -12,7 +12,7 @@ const defaultProject = new Project("Important");
 projectList.push(defaultProject);
 
 const defaultProjectDiv = document.createElement("div");
-defaultProjectDiv.id = "important";
+defaultProjectDiv.id = "Important";
 defaultProjectDiv.textContent = "Important";
 listContainer.appendChild(defaultProjectDiv);
 
