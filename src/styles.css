@@ -1,0 +1,8 @@
+.projectDiv {
+    border: solid black 1px;
+}
+
+.itemDiv {
+    border: dashed gray 1px;
+    background-color: lightcyan;
+}

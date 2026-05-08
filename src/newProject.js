@@ -34,6 +34,7 @@ function addProjectToList(projectName) {
     const projectDiv = document.createElement("div");
     projectDiv.id = projectName;
     projectDiv.textContent = projectName;
+    projectDiv.classList.add("projectDiv");
     listContainer.appendChild(projectDiv);
 }
 

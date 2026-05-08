@@ -14,6 +14,7 @@ projectList.push(defaultProject);
 const defaultProjectDiv = document.createElement("div");
 defaultProjectDiv.id = "Important";
 defaultProjectDiv.textContent = "Important";
+defaultProjectDiv.classList.add("projectDiv");
 listContainer.appendChild(defaultProjectDiv);
 
 

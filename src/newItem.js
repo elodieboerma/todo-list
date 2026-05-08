@@ -53,6 +53,7 @@ function addItem(title,description,checklist,dueDate,priority,project) {
         const itemDiv = document.createElement("div");
         itemDiv.id = title;
         itemDiv.textContent = title;
+        itemDiv.classList.add("itemDiv");
 
         const itemDescription = document.createElement("p");
         itemDescription.id = description;
