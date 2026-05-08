@@ -25,6 +25,7 @@ export class Project {
 }
 
 
+// creates the project
 function addProjectToList(projectName) {
     let project = new Project(projectName);
     project.id = crypto.randomUUID();
@@ -38,7 +39,7 @@ function addProjectToList(projectName) {
 
 
 
-
+// creates the form and directs its inputs to addProjectToList() to create the new project
 export default function () {
 
     //project name

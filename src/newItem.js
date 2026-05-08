@@ -36,11 +36,12 @@ class Item {
 }
 
 
+// creates the item
 function addItem(title,description,checklist,dueDate,priority,project) {
         let item = new Item(title,description,checklist,dueDate,priority,project);
         item.id = crypto.randomUUID();
         // where project is the desired project in the list
-        //search for project by name in projectList, if found then add to projectList
+        // search for project by name in projectList, if found then add to projectList
         let projectFound = projectList.find(p =>
             p.projectName === project
         );
@@ -80,7 +81,7 @@ function addItem(title,description,checklist,dueDate,priority,project) {
 
 
 
-
+// creates the form and directs its inputs to addNew() to create the new item
 export default function () {
 
     // list item title
