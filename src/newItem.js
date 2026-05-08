@@ -1,7 +1,5 @@
 import {projectList} from "./index.js";
 
-const form = document.getElementById("form");
-
 
 class Item {
     constructor (title,description,checklist,dueDate,priority/*,project*/) {
@@ -84,6 +82,9 @@ function addItem(title,description,checklist,dueDate,priority,project) {
 
 // creates the form and directs its inputs to addNew() to create the new item
 export default function () {
+
+    const form = document.createElement("form");
+    document.body.appendChild(form);
 
     // list item title
     let box1 = document.createElement("div");
@@ -213,6 +214,7 @@ export default function () {
             selectedPriority,
             b6input.value
         );
+        form.remove();
     });
 
 }

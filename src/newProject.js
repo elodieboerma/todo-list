@@ -1,6 +1,5 @@
 import {projectList} from "./index.js";
 
-const form = document.getElementById("form");
 const listContainer = document.getElementById("list");
 
 
@@ -43,6 +42,9 @@ function addProjectToList(projectName) {
 // creates the form and directs its inputs to addProjectToList() to create the new project
 export default function () {
 
+    const form = document.createElement("form");
+    document.body.appendChild(form);
+
     //project name
     let box = document.createElement("div");
     let label = document.createElement("label");
@@ -66,6 +68,7 @@ export default function () {
     addNewProject.addEventListener("click", function (event) {
         event.preventDefault();
         addProjectToList(input.value);
+        form.remove();
     });
 
 }
