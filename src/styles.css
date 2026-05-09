@@ -1,8 +1,59 @@
+body {
+    padding: 0rem;
+    margin: 0rem;
+}
+
+button,
+input[type="submit"] {
+    padding: 0.5rem;
+    margin: 1.3rem;
+    border-radius: 5px;
+    border-color: gray;
+}
+
+
+
+/* for the forms */
+form {
+    border: solid lightgray 2px;
+    border-radius: 10px;
+    padding: 3rem;
+    margin: 1rem;
+}
+
+label,
+input {
+    margin: 0.8rem 0.8rem 0.8rem 0rem;
+}
+
+/* for priority section of form */
+#priority {
+    margin: 0.8rem 0rem 1rem 0rem;
+}
+
+/* for radio button options */
+input[type="radio"] {
+    margin: 0.8rem;
+}
+
+
+
+/* for displaying projects and items */
+.projectDiv,
+.itemDiv {
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+
 .projectDiv {
     border: solid black 1px;
+    margin: 0.8rem;
+    font-weight: bold;
 }
 
 .itemDiv {
     border: dashed gray 1px;
     background-color: lightcyan;
+    margin: 1rem;
+    font-weight: normal;
 }

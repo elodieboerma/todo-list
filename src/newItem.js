@@ -138,43 +138,43 @@ export default function () {
 
     // list item priority
     let box5 = document.createElement("div");
-    let legend = document.createElement("legend");
-    legend.textContent = "Priority";
+    box5.textContent = "Priority";
+    box5.id = "priority";
     //asap
     let op1 = document.createElement("div");
-    let label1 = document.createElement("label");
-    label1.for = "asap";
-    label1.textContent = "ASAP";
     let input1 = document.createElement("input");
     input1.id = "asap";
     input1.name = "priority";
     input1.value = "asap";
     input1.type = "radio";
-    op1.append(label1,input1);
+    let label1 = document.createElement("label");
+    label1.for = "asap";
+    label1.textContent = "ASAP";
+    op1.append(input1,label1);
     //soon
     let op2 = document.createElement("div");
-    let label2 = document.createElement("label");
-    label2.for = "soon";
-    label2.textContent = "Soon";
     let input2 = document.createElement("input");
     input2.id = "soon";
     input2.name = "priority";
     input2.value = "soon";
     input2.type = "radio";
-    op2.append(label2,input2);
+    let label2 = document.createElement("label");
+    label2.for = "soon";
+    label2.textContent = "Soon";
+    op2.append(input2,label2);
     //optional
     let op3 = document.createElement("div");
-    let label3 = document.createElement("label");
-    label3.for = "sometime";
-    label3.textContent = "Sometime";
     let input3 = document.createElement("input");
     input3.id = "sometime";
     input3.name = "priority";
     input3.value = "sometime";
     input3.type = "radio";
-    op3.append(label3,input3);
+    let label3 = document.createElement("label");
+    label3.for = "sometime";
+    label3.textContent = "Sometime";
+    op3.append(input3,label3);
     box5.required = true;
-    box5.append(legend,op1,op2,op3);
+    box5.append(op1,op2,op3);
     let selectedPriority = box5.value;
 
     //project it should be in
