@@ -3,14 +3,21 @@ body {
     margin: 0rem;
 }
 
+#buttons {
+    margin: 1rem;
+}
+
 button,
 input[type="submit"] {
     padding: 0.5rem;
-    margin: 1.3rem;
+    margin: 1.3rem 0.5rem 1.3rem 0rem;
     border-radius: 5px;
     border-color: gray;
 }
 
+input[type="submit"]{
+    margin-bottom: 1rem;
+}
 
 
 /* for the forms */
@@ -19,6 +26,7 @@ form {
     border-radius: 10px;
     padding: 3rem;
     margin: 1rem;
+    width: 75vw;
 }
 
 label,
@@ -49,10 +57,11 @@ input[type="radio"] {
     border: solid black 1px;
     margin: 0.8rem;
     font-weight: bold;
+    width: 75vw;
 }
 
 .itemDiv {
-    border: dashed gray 1px;
+    border: solid gray 1px;
     background-color: lightcyan;
     margin: 1rem;
     font-weight: normal;
