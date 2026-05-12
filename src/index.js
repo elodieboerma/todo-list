@@ -4,7 +4,7 @@ import addNewProject, {Project} from "./newProject.js";
 
 export let projectList = [];
 
-const create = document.getElementById("create");
+const newTask = document.getElementById("newTask");
 const newProject = document.getElementById("newProject");
 const listContainer = document.getElementById("list");
 
@@ -28,7 +28,7 @@ newProject.addEventListener("click", (event) => {
 
 
 // add new list item to a project
-create.addEventListener("click", (event) => {
+newTask.addEventListener("click", (event) => {
     event.preventDefault();
     addNew();
 })
