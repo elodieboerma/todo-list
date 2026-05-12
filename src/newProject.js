@@ -42,6 +42,10 @@ function addProjectToList(projectName) {
 // creates the form and directs its inputs to addProjectToList() to create the new project
 export default function () {
 
+    if (document.body.querySelector("form")) {
+        return;
+    }
+
     const form = document.createElement("form");
     document.body.appendChild(form);
 

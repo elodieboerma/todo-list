@@ -83,6 +83,10 @@ function addItem(title,description,checklist,dueDate,priority,project) {
 // creates the form and directs its inputs to addNew() to create the new item
 export default function () {
 
+    if (document.body.querySelector("form")) {
+        return;
+    }
+
     const form = document.createElement("form");
     document.body.appendChild(form);
 
