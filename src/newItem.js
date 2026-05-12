@@ -53,29 +53,48 @@ function addItem(title,description,checklist,dueDate,priority,project) {
         itemDiv.textContent = title;
         itemDiv.classList.add("itemDiv");
 
-        const itemDescription = document.createElement("p");
-        itemDescription.id = description;
-        itemDescription.textContent = description;
-        itemDiv.appendChild(itemDescription);
-
-        const itemChecklist = document.createElement("p");
-        itemChecklist.id = checklist;
-        itemChecklist.textContent = checklist;
-        itemDiv.appendChild(itemChecklist);
 
         const itemDueDate = document.createElement("p");
         itemDueDate.id = dueDate;
         itemDueDate.textContent = dueDate;
         itemDiv.appendChild(itemDueDate);
 
-        const itemPriority = document.createElement("p");
-        itemPriority.id = priority;
-        itemPriority.textContent = priority;
-        itemDiv.appendChild(itemPriority);
-
-        //get the project by project name property and then append the item to that project's itemsArray
+        // get the project by project name property and then append the item to that project's itemsArray
         let projectDiv = document.getElementById(project);
         projectDiv.appendChild(itemDiv);
+
+
+        // make itemDiv expand when clicked to show details and editing options
+        itemDiv.addEventListener("click", (event) => {
+            event.preventDefault();
+
+            const itemDescription = document.createElement("p");
+            itemDescription.id = description;
+            itemDescription.textContent = description;
+
+            const itemChecklist = document.createElement("p");
+            itemChecklist.id = checklist;
+            itemChecklist.textContent = checklist;
+
+            const itemPriority = document.createElement("p");
+            itemPriority.id = priority;
+            itemPriority.textContent = priority;
+
+            //add button that allows editing??
+
+            //need to fix, but this is skeleton
+            // button to delete task
+            const deleteButton = document.createElement("button");
+            deleteButton.id = "deleteButton";
+            deleteButton.textContent = "Delete";
+            deleteButton.addEventListener("click", (event) => {
+                event.preventDefault();
+                projectList.item.remove();
+                projectDiv.itemDiv.remove();
+            })
+
+            itemDiv.append(itemDescription,itemChecklist,itemPriority,deleteButton);
+        });
     }
 
 
