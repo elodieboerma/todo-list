@@ -87,11 +87,21 @@ export default function () {
         return;
     }
 
+    const col1 = document.createElement("div");
+    col1.id = "col1";
+    const col2 = document.createElement("div");
+    col2.id = "col2";
+
+    const inputFields = document.createElement("div");
+    inputFields.id = "inputFields";
+
     const form = document.createElement("form");
+    form.id = "newItemId";
     document.body.appendChild(form);
 
     // list item title
     let box1 = document.createElement("div");
+    box1.id = "box1";
     let b1label = document.createElement("label");
     b1label.for = "title";
     b1label.textContent = "Title";
@@ -104,6 +114,7 @@ export default function () {
 
     // list item description
     let box2 = document.createElement("div");
+    box2.id = "box2";
     let b2label = document.createElement("label");
     b2label.for = "description";
     b2label.textContent = "Description";
@@ -117,6 +128,7 @@ export default function () {
 
     // list item checklist
     let box3 = document.createElement("div");
+    box3.id = "box3";
     let b3label = document.createElement("label");
     b3label.for = "checklist";
     b3label.textContent = "Checklist";
@@ -130,6 +142,7 @@ export default function () {
 
     // list item due date
     let box4 = document.createElement("div");
+    box4.id = "box4";
     let b4label = document.createElement("label");
     b4label.for = "dueDate";
     b4label.textContent = "Due date";
@@ -140,10 +153,12 @@ export default function () {
     b4input.required = true;
     box4.append(b4label,b4input);
 
+    col1.append(box1,box2,box3,box4);
+
     // list item priority
     let box5 = document.createElement("div");
     box5.textContent = "Priority";
-    box5.id = "priority";
+    box5.id = "box5";
     //asap
     let op1 = document.createElement("div");
     let input1 = document.createElement("input");
@@ -183,6 +198,7 @@ export default function () {
 
     //project it should be in
     let box6 = document.createElement("div");
+    box6.id = "box6";
     let b6label = document.createElement("label");
     b6label.for = "project";
     b6label.textContent = "Project";
@@ -199,13 +215,17 @@ export default function () {
     };
     box6.append(b6label,b6input);
 
+    col2.append(box5,box6);
+    inputFields.append(col1,col2);
+
     //button to create list item
     let addNew = document.createElement("input");
     addNew.type = "submit";
     addNew.id = "addNewButton";
     addNew.name = "addNewButton";
     addNew.value = "Create";
-    form.append(box1,box2,box3,box4,box5,box6,addNew);
+
+    form.append(inputFields,addNew);
 
 
     addNew.addEventListener("click", function (event) {

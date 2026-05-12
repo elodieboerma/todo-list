@@ -20,6 +20,7 @@ input[type="submit"]{
 }
 
 
+
 /* for the forms */
 form {
     border: solid lightgray 2px;
@@ -33,19 +34,36 @@ form {
     background-color: white;
 }
 
+
+/* for newItem form */
+#inputFields {
+    display: flex;
+}
+
+#col1,
+#col2 {
+    flex-direction: column;
+}
+
 label,
 input {
     margin: 0.8rem 0.8rem 0.8rem 0rem;
 }
 
-/* for priority section of form */
-#priority {
-    margin: 0.8rem 0rem 1rem 0rem;
+#box1 {
+    margin-top: 0rem;
 }
+
+#box5,
+#box6 {
+    margin-left: 3rem;
+    margin-top: 0.8rem;
+}
+
 
 /* for radio button options */
 input[type="radio"] {
-    margin: 0.8rem;
+    margin-left: 0.8rem;
 }
 
 
