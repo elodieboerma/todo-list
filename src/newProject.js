@@ -64,8 +64,8 @@ export default function () {
     //button to create list item
     let addNewProject = document.createElement("input");
     addNewProject.type = "submit";
-    addNewProject.id = "newProjectButton";
-    addNewProject.name = "newProjectButton";
+    addNewProject.id = "addNewProject";
+    addNewProject.name = "addNewProject";
     addNewProject.value = "Create";
     form.append(box,addNewProject);
 
