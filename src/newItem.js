@@ -213,9 +213,10 @@ export default function () {
     op3.append(input3,label3);
     box5.required = true;
     box5.append(op1,op2,op3);
+    //need to change something here so the selected value is returned
     let selectedPriority = box5.value;
 
-    //project it should be in
+    // project it should be in
     let box6 = document.createElement("div");
     box6.id = "box6";
     let b6label = document.createElement("label");
@@ -225,7 +226,7 @@ export default function () {
     b6input.id = "project";
     b6input.name = "project";
     b6input.required = true;
-    //determines the project options in the dropdown
+    // determines the project options in the dropdown
     for (let i in projectList) {
         let option = document.createElement("option");
         option.value = projectList[i].projectName;
