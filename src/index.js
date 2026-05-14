@@ -1,5 +1,5 @@
 import "./styles.css";
-import addNew from "./newItem.js";
+import { showNewItemForm } from "./newItem.js";
 import addNewProject, {Project} from "./newProject.js";
 
 export let projectList = [];
@@ -30,5 +30,5 @@ newProjectButton.addEventListener("click", (event) => {
 // add new list item to a project
 newTaskButton.addEventListener("click", (event) => {
     event.preventDefault();
-    addNew();
+    showNewItemForm();
 })

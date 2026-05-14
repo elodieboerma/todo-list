@@ -80,7 +80,18 @@ function addItem(title,description,checklist,dueDate,priority,project) {
             itemPriority.id = priority;
             itemPriority.textContent = priority;
 
-            //add button that allows editing??
+            //need to fix
+            // button to edit task
+            const editButton = document.createElement("button");
+            editButton.id = "editButton";
+            editButton.textContent = "Edit";
+            editButton.addEventListener("click", (event) => {
+                event.preventDefault();
+                const itemIndex = projectList.indexOf(item);
+                showNewItemForm();
+                // after form is filled out and submitted, update the item with the new values and update the 
+                // dom tree
+            })
 
             // button to delete task
             const deleteButton = document.createElement("button");
@@ -93,14 +104,14 @@ function addItem(title,description,checklist,dueDate,priority,project) {
                 itemDiv.remove();
             })
 
-            itemDiv.append(itemDescription,itemChecklist,itemPriority,deleteButton);
+            itemDiv.append(itemDescription,itemChecklist,itemPriority,editButton,deleteButton);
         });
     }
 
 
 
 // creates the form and calls addNew() with its inputs as arguments
-export default function () {
+export function showNewItemForm() {
 
     if (document.body.querySelector("form")) {
         return;
