@@ -71,17 +71,23 @@ input[type="radio"] {
 
 
 /* for displaying projects and items */
+#list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
 .projectDiv,
 .itemDiv {
     padding: 0.5rem;
     border-radius: 10px;
+    grid-column: 1;
 }
 
 .projectDiv {
     border: solid black 1px;
     margin: 0.8rem;
     font-weight: bold;
-    width: 50vw;
+    /*width: 50vw;*/
 }
 
 .itemDiv {
