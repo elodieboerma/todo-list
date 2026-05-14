@@ -1,9 +1,10 @@
 import {projectList} from "./index.js";
+import {addProjectToDom} from "./newProjectDom.js";
 
-const listContainer = document.getElementById("list");
 
 
 export class Project {
+
     constructor (projectName) {
         this.projectName = projectName;
         //array to store to-dos
@@ -21,58 +22,16 @@ export class Project {
             this.projectName = projectName;
             this.itemsArray = itemsArray;
         }
+
 }
+
 
 
 // creates the project
-function addProjectToList(projectName) {
+export function addProjectToList(projectName) {
+
     let project = new Project(projectName);
     project.id = crypto.randomUUID();
     projectList.push(project);
-    
-    const projectDiv = document.createElement("div");
-    projectDiv.id = projectName;
-    projectDiv.textContent = projectName;
-    projectDiv.classList.add("projectDiv");
-    listContainer.appendChild(projectDiv);
-}
-
-
-
-// creates the form and directs its inputs to addProjectToList() to create the new project
-export default function () {
-
-    if (document.body.querySelector("form")) {
-        return;
-    }
-
-    const form = document.createElement("form");
-    document.body.appendChild(form);
-
-    //project name
-    let box = document.createElement("div");
-    let label = document.createElement("label");
-    label.for = "name";
-    label.textContent = "Name";
-    let input = document.createElement("input");
-    input.id = "name";
-    input.name = "name";
-    input.type = "text";
-    input.required = true;
-    box.append(label,input);
-
-    //button to create list item
-    let addNewProject = document.createElement("input");
-    addNewProject.type = "submit";
-    addNewProject.id = "addNewProject";
-    addNewProject.name = "addNewProject";
-    addNewProject.value = "Create";
-    form.append(box,addNewProject);
-
-    addNewProject.addEventListener("click", function (event) {
-        event.preventDefault();
-        addProjectToList(input.value);
-        form.remove();
-    });
 
 }

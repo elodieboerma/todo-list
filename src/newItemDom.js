@@ -1,5 +1,7 @@
 import {projectList} from "./index.js";
-import {item} from "./newItem.js";
+import {addItem, item} from "./newItem.js";
+
+
 
 // create the form and give inputs to addNew() as arguments
 export function showNewItemForm() {
@@ -39,12 +41,9 @@ export function showNewItemForm() {
     let b2label = document.createElement("label");
     b2label.for = "description";
     b2label.textContent = "Description";
-    let b2input = document.createElement("input");
+    let b2input = document.createElement("textarea");
     b2input.id = "description";
     b2input.name = "description";
-    b2input.type = "textarea";
-    b2input.rows = "3";
-    b2input.cols = "50";
     box2.append(b2label,b2input);
 
     // list item checklist
@@ -53,12 +52,9 @@ export function showNewItemForm() {
     let b3label = document.createElement("label");
     b3label.for = "checklist";
     b3label.textContent = "Checklist";
-    let b3input = document.createElement("input");
+    let b3input = document.createElement("textarea");
     b3input.id = "checklist";
     b3input.name = "checklist";
-    b3input.type = "textarea";
-    b3input.rows = "10";
-    b3input.cols = "50";
     box3.append(b3label,b3input);
 
     // list item due date
@@ -116,7 +112,7 @@ export function showNewItemForm() {
     box5.required = true;
     box5.append(op1,op2,op3);
     //need to change something here so the selected value is returned
-    let selectedPriority = box5.value;
+    //let selectedPriority = box5.value;
 
     // project it should be in
     let box6 = document.createElement("div");
@@ -149,9 +145,14 @@ export function showNewItemForm() {
 
     form.append(inputFields,addNew);
 
-
     addNew.addEventListener("click", function (event) {
         event.preventDefault();
+
+        // assign value of selected radio button for item's priority
+        const selectedPriority = form.querySelector(
+        'input[name="priority"]:checked'
+        )?.value;
+
         addItemToDom (
             b1input.value,
             b2input.value,
@@ -169,6 +170,9 @@ export function showNewItemForm() {
 
 // add item to dom tree
 export function addItemToDom(title,description,checklist,dueDate,priority,project) {
+
+    addItem(title,description,checklist,dueDate,priority,project);
+
     const itemDiv = document.createElement("div");
     itemDiv.id = title;
     itemDiv.textContent = title;
@@ -228,7 +232,9 @@ export function expandItemDiv(itemDiv,description,checklist,priority) {
     deleteButton.addEventListener("click", (event) => {
         event.preventDefault();
         const itemIndex = projectList.indexOf(item);
-        projectList.splice(itemIndex, 1);
+        let project = projectList.find(p => p.projectName === item.project);
+        let index = project.itemsArray.findIndex(i => i.id === item.id);
+        project.itemsArray.splice(index, 1);
         itemDiv.remove();
     })
 

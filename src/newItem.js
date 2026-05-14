@@ -35,10 +35,12 @@ class Item {
     }
 }
 
+
+
 export let item;
 
-// creates the item
-function addItem(title,description,checklist,dueDate,priority,project) {
+// creates the item including putting it in the correct project
+export function addItem(title,description,checklist,dueDate,priority,project) {
         item = new Item(title,description,checklist,dueDate,priority,project);
         item.id = crypto.randomUUID();
         // where "project" is the desired project in the list
@@ -50,6 +52,4 @@ function addItem(title,description,checklist,dueDate,priority,project) {
             projectFound.itemsArray.push(item);
         };
 
-        // actually adding it to dom tree
-        addItemToDom(title,description,checklist,dueDate,priority,project);
 }
