@@ -82,15 +82,15 @@ function addItem(title,description,checklist,dueDate,priority,project) {
 
             //add button that allows editing??
 
-            //need to fix, but this is skeleton
             // button to delete task
             const deleteButton = document.createElement("button");
             deleteButton.id = "deleteButton";
             deleteButton.textContent = "Delete";
             deleteButton.addEventListener("click", (event) => {
                 event.preventDefault();
-                projectList.item.remove();
-                projectDiv.itemDiv.remove();
+                const itemIndex = projectList.indexOf(item);
+                projectList.splice(itemIndex, 1);
+                itemDiv.remove();
             })
 
             itemDiv.append(itemDescription,itemChecklist,itemPriority,deleteButton);
@@ -99,7 +99,7 @@ function addItem(title,description,checklist,dueDate,priority,project) {
 
 
 
-// creates the form and directs its inputs to addNew() to create the new item
+// creates the form and calls addNew() with its inputs as arguments
 export default function () {
 
     if (document.body.querySelector("form")) {
