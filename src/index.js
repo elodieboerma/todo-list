@@ -1,5 +1,5 @@
 import "./styles.css";
-import { showNewItemForm } from "./newItem.js";
+import {showNewItemForm} from "./newItemDom.js";
 import addNewProject, {Project} from "./newProject.js";
 
 export let projectList = [];
