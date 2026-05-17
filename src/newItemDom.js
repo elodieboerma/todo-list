@@ -29,6 +29,7 @@ export function showNewItemForm(onSubmit, item="null") {
     b1label.for = "title";
     b1label.textContent = "Title";
     let b1input = document.createElement("input");
+    b1input.value = item ? item.title : "";
     b1input.id = "title";
     b1input.name = "title";
     b1input.type = "text";
@@ -42,6 +43,7 @@ export function showNewItemForm(onSubmit, item="null") {
     b2label.for = "description";
     b2label.textContent = "Description";
     let b2input = document.createElement("textarea");
+    b2input.value = item ? item.description : "";
     b2input.id = "description";
     b2input.name = "description";
     box2.append(b2label,b2input);
@@ -53,6 +55,7 @@ export function showNewItemForm(onSubmit, item="null") {
     b3label.for = "checklist";
     b3label.textContent = "Checklist";
     let b3input = document.createElement("textarea");
+    b3input.value = item ? item.checklist : "";
     b3input.id = "checklist";
     b3input.name = "checklist";
     box3.append(b3label,b3input);
@@ -64,6 +67,7 @@ export function showNewItemForm(onSubmit, item="null") {
     b4label.for = "dueDate";
     b4label.textContent = "Due date";
     let b4input = document.createElement("input");
+    b4input.value = item ? item.dueDate : "";
     b4input.id = "dueDate";
     b4input.name = "dueDate";
     b4input.type = "date";
@@ -111,6 +115,16 @@ export function showNewItemForm(onSubmit, item="null") {
     op3.append(input3,label3);
     box5.required = true;
     box5.append(op1,op2,op3);
+    // if item exists, then check the radio button that matches the item's priority
+    if (item) {
+    const selected = item.priority;
+    const radio = form.querySelector(
+        `input[name="priority"][value="${selected}"]`
+    );
+    if (radio) {
+        radio.checked = true;
+    }
+    }
 
     // project it should be in
     let box6 = document.createElement("div");
@@ -119,6 +133,7 @@ export function showNewItemForm(onSubmit, item="null") {
     b6label.for = "project";
     b6label.textContent = "Project";
     let b6input = document.createElement("select");
+    b6input.value = item ? item.project : projectList[0].projectName;
     b6input.id = "project";
     b6input.name = "project";
     b6input.required = true;

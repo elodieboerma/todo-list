@@ -13,7 +13,6 @@ const defaultProject = new Project("Important");
 projectList.push(defaultProject);
 
 const defaultProjectDiv = document.createElement("div");
-// make id lowercase to match other ids??
 defaultProjectDiv.id = "Important";
 defaultProjectDiv.textContent = "Important";
 defaultProjectDiv.classList.add("projectDiv");
