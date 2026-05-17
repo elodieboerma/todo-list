@@ -183,12 +183,17 @@ export function addItemToDom(title,description,checklist,dueDate,priority,projec
     itemDueDate.textContent = dueDate;
     itemDiv.appendChild(itemDueDate);
 
+    const expandArrow = document.createElement("div");
+    expandArrow.id = "expandArrow";
+    expandArrow.textContent = ">>";
+    itemDiv.appendChild(expandArrow);
+
     // get the project by project name property and then append the item to that project's itemsArray
     let projectDiv = document.getElementById(project);
     projectDiv.appendChild(itemDiv);
 
-    // expand itemDiv when clicked
-    itemDiv.addEventListener("click", (event) => {
+    // expand itemDiv when expandArrow is clicked
+    expandArrow.addEventListener("click", (event) => {
         event.preventDefault();
         expandItemDiv(itemDiv,description,checklist,itemDueDate,priority);
     });
@@ -212,12 +217,10 @@ export function expandItemDiv(itemDiv,description,checklist,itemDueDate,priority
     itemPriority.textContent = priority;
 
 
-    //need to fix
     // button to edit task
     const editButton = document.createElement("button");
     editButton.id = "editButton";
     editButton.textContent = "Edit";
-
     editButton.addEventListener("click", (event) => {
         event.preventDefault();
 
