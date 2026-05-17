@@ -4,7 +4,7 @@ import {addItem, item} from "./newItem.js";
 
 
 // create the form and give inputs to addNew() as arguments
-export function showNewItemForm() {
+export function showNewItemForm(onSubmit, item="null") {
 
     if (document.body.querySelector("form")) {
         return;
@@ -111,8 +111,6 @@ export function showNewItemForm() {
     op3.append(input3,label3);
     box5.required = true;
     box5.append(op1,op2,op3);
-    //need to change something here so the selected value is returned
-    //let selectedPriority = box5.value;
 
     // project it should be in
     let box6 = document.createElement("div");
@@ -149,18 +147,20 @@ export function showNewItemForm() {
         event.preventDefault();
 
         // assign value of selected radio button for item's priority
-        const selectedPriority = form.querySelector(
-        'input[name="priority"]:checked'
-        )?.value;
+        // if checked assign the checked value, else assign the value of project ("important")
+        let selectedPriority =
+            form.querySelector('input[name="priority"]:checked')?.value || project;
 
-        addItemToDom (
-            b1input.value,
-            b2input.value,
-            b3input.value,
-            b4input.value,
-            selectedPriority,
-            b6input.value
-        );
+        let data = {
+            title: b1input.value,
+            description: b2input.value,
+            checklist: b3input.value,
+            dueDate: b4input.value,
+            priority: selectedPriority,
+            project: b6input.value
+        };
+
+        onSubmit(data);
         form.remove();
     });
 
@@ -187,18 +187,17 @@ export function addItemToDom(title,description,checklist,dueDate,priority,projec
     let projectDiv = document.getElementById(project);
     projectDiv.appendChild(itemDiv);
 
-
     // expand itemDiv when clicked
     itemDiv.addEventListener("click", (event) => {
         event.preventDefault();
-        expandItemDiv(itemDiv,description,checklist,priority);
+        expandItemDiv(itemDiv,description,checklist,itemDueDate,priority);
     });
 }
 
 
 
 // expand itemDiv to show details and editing options
-export function expandItemDiv(itemDiv,description,checklist,priority) {
+export function expandItemDiv(itemDiv,description,checklist,itemDueDate,priority) {
 
     const itemDescription = document.createElement("p");
     itemDescription.id = description;
@@ -212,18 +211,45 @@ export function expandItemDiv(itemDiv,description,checklist,priority) {
     itemPriority.id = priority;
     itemPriority.textContent = priority;
 
+
     //need to fix
     // button to edit task
     const editButton = document.createElement("button");
     editButton.id = "editButton";
     editButton.textContent = "Edit";
+
     editButton.addEventListener("click", (event) => {
         event.preventDefault();
+
         const itemIndex = projectList.indexOf(item);
-        showNewItemForm();
-        // after form is filled out and submitted, update the item with the new values and update the 
-        // dom tree
+        // uncomment and commit in separate commit
+            //itemDiv.style.filter = "saturate(0.5)";
+        
+        showNewItemForm((data) => {
+
+            // update the item in memory
+            item.title = data.title;
+            item.description = data.description;
+            item.checklist = data.checklist;
+            item.dueDate = data.dueDate;
+            item.priority = data.priority;
+            item.project = data.project;
+
+            // remove the item from the dom
+            itemDiv.remove();
+
+            // re-add the item in the dom with updated information
+            addItemToDom(
+                item.title,
+                item.description,
+                item.checklist,
+                item.dueDate,
+                item.priority,
+                item.project
+            );
+        }, item);
     })
+
 
     // button to delete task
     const deleteButton = document.createElement("button");

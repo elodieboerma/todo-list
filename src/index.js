@@ -1,5 +1,5 @@
 import "./styles.css";
-import {showNewItemForm} from "./newItemDom.js";
+import {addItemToDom, showNewItemForm} from "./newItemDom.js";
 import {Project} from "./newProject.js";
 import {showNewProjectForm} from "./newProjectDom.js";
 
@@ -13,6 +13,7 @@ const defaultProject = new Project("Important");
 projectList.push(defaultProject);
 
 const defaultProjectDiv = document.createElement("div");
+// make id lowercase to match other ids??
 defaultProjectDiv.id = "Important";
 defaultProjectDiv.textContent = "Important";
 defaultProjectDiv.classList.add("projectDiv");
@@ -31,5 +32,14 @@ newProjectButton.addEventListener("click", (event) => {
 // add new list item to a project
 newTaskButton.addEventListener("click", (event) => {
     event.preventDefault();
-    showNewItemForm();
+    showNewItemForm((data) => {
+        addItemToDom(
+            data.title,
+            data.description,
+            data.checklist,
+            data.dueDate,
+            data.priority,
+            data.project
+        );
+    });
 })

@@ -33,6 +33,10 @@ class Item {
         this.priority = priority;
         this.project = project;
     }
+
+    editItem(title,description,checklist,dueDate,priority) {
+        itemObject({title,description,checklist,dueDate,priority});;
+    }
 }
 
 
@@ -43,8 +47,8 @@ export let item;
 export function addItem(title,description,checklist,dueDate,priority,project) {
         item = new Item(title,description,checklist,dueDate,priority,project);
         item.id = crypto.randomUUID();
-        // where "project" is the desired project in the list
         // search for project by name in projectList, if found then add to projectList
+            // where "project" is the desired project in the list
         let projectFound = projectList.find(p =>
             p.projectName === project
         );
