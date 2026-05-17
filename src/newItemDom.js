@@ -222,8 +222,7 @@ export function expandItemDiv(itemDiv,description,checklist,itemDueDate,priority
         event.preventDefault();
 
         const itemIndex = projectList.indexOf(item);
-        // uncomment and commit in separate commit
-            //itemDiv.style.filter = "saturate(0.5)";
+        itemDiv.style.backgroundColor = "lightgray";
         
         showNewItemForm((data) => {
 
