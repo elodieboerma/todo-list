@@ -17,7 +17,7 @@ export function showNewProjectForm() {
     //project name
     let box = document.createElement("div");
     let label = document.createElement("label");
-    label.for = "name";
+    label.htmlFor = "name";
     label.textContent = "Name";
     let input = document.createElement("input");
     input.id = "name";
