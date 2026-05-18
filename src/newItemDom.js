@@ -4,7 +4,7 @@ import {addItem, item} from "./newItem.js";
 
 
 // create the form and give inputs to addNew() as arguments
-export function showNewItemForm(onSubmit, item="null") {
+export function showNewItemForm(onSubmit, item=null) {
 
     if (document.body.querySelector("form")) {
         return;
@@ -29,6 +29,7 @@ export function showNewItemForm(onSubmit, item="null") {
     b1label.for = "title";
     b1label.textContent = "Title";
     let b1input = document.createElement("input");
+    // ternary operator -- if item exists, b1input = item's title, otherwise it remains empty
     b1input.value = item ? item.title : "";
     b1input.id = "title";
     b1input.name = "title";
@@ -115,16 +116,20 @@ export function showNewItemForm(onSubmit, item="null") {
     op3.append(input3,label3);
     box5.required = true;
     box5.append(op1,op2,op3);
-    // if item exists, then check the radio button that matches the item's priority
+    // for editing an item -- if item exists, then check the radio button that matches the item's priority
     if (item) {
-    const selected = item.priority;
-    const radio = form.querySelector(
-        `input[name="priority"][value="${selected}"]`
-    );
-    if (radio) {
-        radio.checked = true;
+        // find the "priority" attirbute of the item
+        const selected = item.priority;
+        // find the value of the "priority" attribute
+        const radio = form.querySelector(
+            `input[name="priority"][value="${selected}"]`
+        );
+        // if "priority" has a value, check the corresponding radio button
+        if (radio) { 
+            radio.checked = true;
+        }
     }
-    }
+
 
     // project it should be in
     let box6 = document.createElement("div");
