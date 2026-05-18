@@ -20,7 +20,6 @@ export function showNewItemForm(onSubmit, item=null) {
 
     const form = document.createElement("form");
     form.id = "newItemId";
-    document.body.appendChild(form);
 
     // list item title
     let box1 = document.createElement("div");
@@ -162,6 +161,8 @@ export function showNewItemForm(onSubmit, item=null) {
     addNew.value = "Create";
 
     form.append(inputFields,addNew);
+    document.body.appendChild(form);
+    b1input.focus();
 
     addNew.addEventListener("click", function (event) {
         event.preventDefault();
