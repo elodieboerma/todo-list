@@ -137,7 +137,6 @@ export function showNewItemForm(onSubmit, item=null) {
     b6label.htmlFor = "project";
     b6label.textContent = "Project";
     let b6input = document.createElement("select");
-    b6input.value = item ? item.project : projectList[0].projectName;
     b6input.id = "project";
     b6input.name = "project";
     b6input.required = true;
@@ -149,6 +148,7 @@ export function showNewItemForm(onSubmit, item=null) {
         b6input.appendChild(option);
     };
     box6.append(b6label,b6input);
+    b6input.value = item ? item.project : projectList[0].projectName;
 
     col2.append(box5,box6);
     inputFields.append(col1,col2);
@@ -168,9 +168,9 @@ export function showNewItemForm(onSubmit, item=null) {
         event.preventDefault();
 
         // assign value of selected radio button for item's priority
-        // if checked assign the checked value, else assign the value of project ("important")
+        // if checked assign the checked value
         let selectedPriority =
-            form.querySelector('input[name="priority"]:checked')?.value || project;
+            form.querySelector('input[name="priority"]:checked')?.value;
 
         let data = {
             title: b1input.value,

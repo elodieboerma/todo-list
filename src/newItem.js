@@ -4,14 +4,13 @@ import {addItemToDom} from "./newItemDom.js";
 
 
 class Item {
-    constructor (title,description,checklist,dueDate,priority/*,project*/) {
+    constructor (title,description,checklist,dueDate,priority,project) {
         this.title = title;
         this.description = description;
         this.checklist = checklist;
         this.dueDate = dueDate;
         this.priority = priority;
-        //this.project = project;
-        this.project;
+        this.project = project;
     }
 
     get itemObject() {
@@ -25,7 +24,7 @@ class Item {
         }
     }
 
-    set itemObject({title,description,checklist,dueDate,priority/*,project*/}) {
+    set itemObject({title,description,checklist,dueDate,priority,project}) {
         this.title = title;
         this.description = description;
         this.checklist = checklist;
@@ -34,8 +33,8 @@ class Item {
         this.project = project;
     }
 
-    editItem(title,description,checklist,dueDate,priority) {
-        itemObject({title,description,checklist,dueDate,priority});;
+    editItem(title,description,checklist,dueDate,priority,project) {
+        itemObject({title,description,checklist,dueDate,priority,project});
     }
 }
 
