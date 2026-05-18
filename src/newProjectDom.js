@@ -13,7 +13,6 @@ export function showNewProjectForm() {
     }
 
     const form = document.createElement("form");
-    document.body.appendChild(form);
 
     //project name
     let box = document.createElement("div");
@@ -34,6 +33,9 @@ export function showNewProjectForm() {
     addNewProject.name = "addNewProject";
     addNewProject.value = "Create";
     form.append(box,addNewProject);
+
+    document.body.appendChild(form);
+    input.focus();
 
     addNewProject.addEventListener("click", function (event) {
         event.preventDefault();
