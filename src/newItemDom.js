@@ -120,7 +120,7 @@ export function showNewItemForm(onSubmit, item=null) {
         // find the "priority" attirbute of the item
         const selected = item.priority;
         // find the value of the "priority" attribute
-        const radio = form.querySelector(
+        const radio = box5.querySelector(
             `input[name="priority"][value="${selected}"]`
         );
         // if "priority" has a value, check the corresponding radio button
