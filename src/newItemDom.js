@@ -219,6 +219,12 @@ export function addItemToDom(title,description,checklist,dueDate,priority,projec
     itemDueDate.textContent = dueDate;
     itemDiv.appendChild(itemDueDate);
 
+    if (priority == "asap") {
+        itemDiv.classList.add("asap");
+    } else if (priority == "soon") {
+        itemDiv.classList.add("soon");
+    }
+
     const expandArrow = document.createElement("div");
     expandArrow.id = "expandArrow";
     expandArrow.textContent = ">>";

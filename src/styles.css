@@ -100,3 +100,11 @@ input[type="radio"] {
     margin: 1rem;
     font-weight: normal;
 }
+
+.soon {
+    background-color: rgb(180, 252, 252);
+}
+
+.asap {
+    background-color: rgb(83, 250, 250);
+}
