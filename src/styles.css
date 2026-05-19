@@ -135,6 +135,11 @@ input[type="radio"] {
     font-weight: normal;
 }
 
+#expandArrow {
+    text-align: center;
+    font-size: 2rem;
+}
+
 .soon {
     background-color: rgb(126, 247, 247);
 }

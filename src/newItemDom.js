@@ -225,7 +225,7 @@ export function addItemToDom(title,description,checklist,dueDate,priority,projec
 
     const expandArrow = document.createElement("div");
     expandArrow.id = "expandArrow";
-    expandArrow.textContent = ">>";
+    expandArrow.textContent = "⌄";
     itemDiv.appendChild(expandArrow);
 
     container.appendChild(itemDiv);
