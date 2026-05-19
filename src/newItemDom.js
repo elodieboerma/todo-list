@@ -202,9 +202,14 @@ export function addItemToDom(title,description,checklist,dueDate,priority,projec
     checkbox.type = "checkbox";
 
     const itemDiv = document.createElement("div");
-    itemDiv.id = title;
-    itemDiv.textContent = title;
+    itemDiv.id = "itemDiv";
+    itemDiv.textContent = "itemDiv";
     itemDiv.classList.add("itemDiv");
+
+    const itemTitle = document.createElement("p");
+    itemTitle.id = title;
+    itemTitle.textContent = title;
+    itemDiv.appendChild(itemTitle);
 
     const itemDueDate = document.createElement("p");
     itemDueDate.id = dueDate;
