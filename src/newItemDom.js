@@ -276,7 +276,7 @@ export function expandItemDiv(itemDiv,description,checklist,itemDueDate,priority
             item.project = data.project;
 
             // remove the item from the dom
-            itemDiv.remove();
+            container.remove();
 
             // re-add the item in the dom with updated information
             addItemToDom(
@@ -301,8 +301,7 @@ export function expandItemDiv(itemDiv,description,checklist,itemDueDate,priority
         let project = projectList.find(p => p.projectName === item.project);
         let index = project.itemsArray.findIndex(i => i.id === item.id);
         project.itemsArray.splice(index, 1);
-        checkbox.remove();
-        itemDiv.remove();
+        container.remove();
     })
 
     itemDiv.append(itemDescription,itemChecklist,itemPriority,editButton,deleteButton);
