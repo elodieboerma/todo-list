@@ -21,6 +21,7 @@ export function showNewItemForm(onSubmit, item=null) {
     const form = document.createElement("form");
     form.id = "newItemId";
 
+
     // list item title
     let box1 = document.createElement("div");
     box1.id = "box1";
@@ -194,6 +195,12 @@ export function addItemToDom(title,description,checklist,dueDate,priority,projec
 
     addItem(title,description,checklist,dueDate,priority,project);
 
+    // box to check off task when complete
+    let checkbox = document.createElement("input");
+    checkbox.id = "checkbox";
+    checkbox.name = "checkbox";
+    checkbox.type = "checkbox";
+
     const itemDiv = document.createElement("div");
     itemDiv.id = title;
     itemDiv.textContent = title;
@@ -211,7 +218,7 @@ export function addItemToDom(title,description,checklist,dueDate,priority,projec
 
     // get the project by project name property and then append the item to that project's itemsArray
     let projectDiv = document.getElementById(project);
-    projectDiv.appendChild(itemDiv);
+    projectDiv.append(checkbox,itemDiv);
 
     // expand itemDiv when expandArrow is clicked
     expandArrow.addEventListener("click", (event) => {
@@ -284,6 +291,7 @@ export function expandItemDiv(itemDiv,description,checklist,itemDueDate,priority
         let project = projectList.find(p => p.projectName === item.project);
         let index = project.itemsArray.findIndex(i => i.id === item.id);
         project.itemsArray.splice(index, 1);
+        checkbox.remove();
         itemDiv.remove();
     })
 
