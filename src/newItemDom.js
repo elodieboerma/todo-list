@@ -195,12 +195,12 @@ export function showNewItemForm(onSubmit, item=null) {
 // add item to dom tree
 export function addItemToDom(title,description,checklist,dueDate,priority,project) {
 
-    addItem(title,description,checklist,dueDate,priority,project);
+    const item = addItem(title,description,checklist,dueDate,priority,project);
 
     const container = document.createElement("div");
     container.id = "container";
 
-    addCheckbox(container,title,project);
+    addCheckbox(container,item);
 
     const itemDiv = document.createElement("div");
     itemDiv.id = title;
@@ -241,13 +241,9 @@ export function addItemToDom(title,description,checklist,dueDate,priority,projec
     });
 }
 
-function addCheckbox(container,title,project) {
+function addCheckbox(container,item) {
     let checkbox = document.createElement("input");
 
-    const item = projectList.find(
-        p => p.projectName === project)?.
-            itemsArray.find(i => i.title === title
-    );
     checkbox.checked = item ? item.completed : false;
 
     checkbox.id = "checkbox";
