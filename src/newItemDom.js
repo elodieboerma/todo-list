@@ -206,7 +206,6 @@ export function addItemToDom(title,description,checklist,dueDate,priority,projec
 
     const itemDiv = document.createElement("div");
     itemDiv.id = title;
-    itemDiv.textContent = "itemDiv";
     itemDiv.classList.add("itemDiv");
 
     const itemTitle = document.createElement("p");
