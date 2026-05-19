@@ -239,14 +239,14 @@ export function addItemToDom(title,description,checklist,dueDate,priority,projec
     // expand itemDiv when expandArrow is clicked
     expandArrow.addEventListener("click", (event) => {
         event.preventDefault();
-        expandItemDiv(itemDiv,title,description,checklist,dueDate,priority,project);
+        expandItemDiv(container,itemDiv,title,description,checklist,dueDate,priority,project);
     });
 }
 
 
 
 // expand itemDiv to show details and editing options
-export function expandItemDiv(itemDiv,title,description,checklist,dueDate,priority,project) {
+export function expandItemDiv(container,itemDiv,title,description,checklist,dueDate,priority,project) {
 
     const itemDescription = document.createElement("p");
     itemDescription.id = "description";
