@@ -40,7 +40,7 @@ class Item {
 
 
 
-export let item;
+let item;
 
 // creates the item including putting it in the correct project
 export function addItem(title,description,checklist,dueDate,priority,project) {

@@ -1,5 +1,5 @@
 import {projectList} from "./index.js";
-import {addItem, item} from "./newItem.js";
+import {addItem/*, item*/} from "./newItem.js";
 
 
 
@@ -219,6 +219,7 @@ export function addItemToDom(title,description,checklist,dueDate,priority,projec
     itemDueDate.textContent = dueDate;
     itemDiv.appendChild(itemDueDate);
 
+    // for setting color based on priority
     if (priority == "asap") {
         itemDiv.classList.add("asap");
     } else if (priority == "soon") {
@@ -239,14 +240,14 @@ export function addItemToDom(title,description,checklist,dueDate,priority,projec
     // expand itemDiv when expandArrow is clicked
     expandArrow.addEventListener("click", (event) => {
         event.preventDefault();
-        expandItemDiv(itemDiv,description,checklist,itemDueDate,priority);
+        expandItemDiv(itemDiv,description,checklist,priority);
     });
 }
 
 
 
 // expand itemDiv to show details and editing options
-export function expandItemDiv(itemDiv,description,checklist,itemDueDate,priority) {
+export function expandItemDiv(itemDiv,description,checklist,priority) {
 
     const itemDescription = document.createElement("p");
     itemDescription.id = description;
