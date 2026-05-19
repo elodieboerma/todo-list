@@ -237,7 +237,9 @@ export function addItemToDom(title,description,checklist,dueDate,priority,projec
     // expand itemDiv when expandArrow is clicked
     expandArrow.addEventListener("click", (event) => {
         event.preventDefault();
+        expandArrow.remove();
         expandItemDiv(container,itemDiv,title,description,checklist,dueDate,priority,project);
+        itemDiv.appendChild(expandArrow);
     });
 }
 
