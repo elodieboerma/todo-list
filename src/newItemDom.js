@@ -254,11 +254,7 @@ export function expandItemDiv(itemDiv,title,description,checklist,dueDate,priori
 
     const itemChecklist = document.createElement("p");
     itemChecklist.id = "checklist";
-    itemChecklist.textContent = checklist;
-
-    const itemPriority = document.createElement("p");
-    itemPriority.id = "priority";
-    itemPriority.textContent = priority;
+    itemChecklist.textContent = `Checklist: ${checklist}`;
 
     // find the item in projectList whose title matches the title of the item last expanded
     const item = projectList.find(p => 
@@ -315,6 +311,6 @@ export function expandItemDiv(itemDiv,title,description,checklist,dueDate,priori
         container.remove();
     })
 
-    itemDiv.append(itemDescription,itemChecklist,itemPriority,editButton,deleteButton);
+    itemDiv.append(itemDescription,itemChecklist,editButton,deleteButton);
 
 }
