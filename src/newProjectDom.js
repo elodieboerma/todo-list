@@ -53,8 +53,29 @@ export function addProjectToDom(projectName) {
 
     const projectDiv = document.createElement("div");
     projectDiv.id = projectName;
-    projectDiv.textContent = projectName;
     projectDiv.classList.add("projectDiv");
-    listContainer.appendChild(projectDiv);
 
+    const headerDiv = document.createElement("div");
+    headerDiv.textContent = projectName;
+    headerDiv.style.display = "flex";
+    addDeleteButton(projectName,headerDiv,projectDiv);
+    projectDiv.appendChild(headerDiv);
+
+    listContainer.append(projectDiv);
+
+}
+
+function addDeleteButton(projectName,headerDiv,projectDiv) {
+    const deleteButton = document.createElement("div");
+    deleteButton.id = "deleteButton";
+    deleteButton.textContent = "⊗";
+    deleteButton.style.marginLeft = "0.5rem";
+    headerDiv.appendChild(deleteButton);
+    deleteButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        const projectIndex = projectList.indexOf(projectName);
+        projectList.splice(projectIndex, 1);
+        projectDiv.remove();
+        deleteButton.remove();
+    })
 }
