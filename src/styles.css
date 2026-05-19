@@ -133,6 +133,7 @@ input[type="radio"] {
     background-color: lightcyan;
     margin: 1rem;
     font-weight: normal;
+    width: 100%;
 }
 
 #expandArrow {
