@@ -234,14 +234,18 @@ export function addItemToDom(title,description,checklist,dueDate,priority,projec
     let projectDiv = document.getElementById(project);
     projectDiv.append(container);
 
+    const expanded = false;
+
     // expand itemDiv when expandArrow is clicked
     expandArrow.addEventListener("click", (event) => {
         event.preventDefault();
-        expandArrow.remove();
-        expandItemDiv(container,itemDiv,title,description,checklist,dueDate,priority,project);
-        itemDiv.appendChild(expandArrow);
+        expandItemDiv(container,itemDiv,expandArrow,expanded,title,description,checklist,dueDate,priority,project);
     });
 }
+
+
+
+
 
 function addCheckbox(container,item) {
     let checkbox = document.createElement("input");
@@ -266,28 +270,48 @@ function addCheckbox(container,item) {
 
 
 // expand itemDiv to show details and editing options
-export function expandItemDiv(container,itemDiv,title,description,checklist,dueDate,priority,project) {
+export function expandItemDiv(container,itemDiv,expandArrow,expanded,title,description,checklist,dueDate,
+    priority,project) {
 
-    const itemDescription = document.createElement("p");
-    itemDescription.id = "description";
-    itemDescription.textContent = description;
+    if (expanded === false) {
+        expandArrow.remove();
 
-    const itemChecklist = document.createElement("p");
-    itemChecklist.id = "checklist";
-    itemChecklist.textContent = `Checklist: ${checklist}`;
+        const itemDescription = document.createElement("p");
+        itemDescription.id = "description";
+        itemDescription.textContent = description;
 
-    // find the item in projectList whose title matches the title of the item last expanded
-    const item = projectList.find(p => 
-        p.projectName === project)
-            .itemsArray.find(
-                i => i.title === title
-    );
+        const itemChecklist = document.createElement("p");
+        itemChecklist.id = "checklist";
+        itemChecklist.textContent = `Checklist: ${checklist}`;
 
-    itemDiv.append(itemDescription,itemChecklist);
+        // find the item in projectList whose title matches the title of the item last expanded
+        const item = projectList.find(p => 
+            p.projectName === project).
+            itemsArray.find(i => i.title === title
+        );
 
-    addEditButton(container,itemDiv,item);
+        itemDiv.append(itemDescription,itemChecklist);
 
-    addDeleteButton(container,itemDiv,item);
+        const editButton = addEditButton(container,itemDiv,item);
+
+        const deleteButton = addDeleteButton(container,itemDiv,item);
+
+        expandArrow.textContent = "‸";
+        itemDiv.appendChild(expandArrow);
+        expanded === true;
+    } else if (expanded === true)  {
+        const itemDescription = itemDiv.querySelector("#description");
+        const itemChecklist = itemDiv.querySelector("#checklist");
+        const editButton = itemDiv.querySelector("#editButton");
+        const deleteButton = itemDiv.querySelector("#deleteButton");
+
+        itemDescription.remove();
+        itemChecklist.remove();
+        editButton.remove();
+        deleteButton.remove();
+        expandArrow.textContent = "⌄";
+        expanded === false;
+    }
 
 }
 
