@@ -195,6 +195,9 @@ export function addItemToDom(title,description,checklist,dueDate,priority,projec
 
     addItem(title,description,checklist,dueDate,priority,project);
 
+    const container = document.createElement("div");
+    container.id = "container";
+
     // box to check off task when complete
     let checkbox = document.createElement("input");
     checkbox.id = "checkbox";
@@ -221,9 +224,11 @@ export function addItemToDom(title,description,checklist,dueDate,priority,projec
     expandArrow.textContent = ">>";
     itemDiv.appendChild(expandArrow);
 
+    container.append(checkbox,itemDiv);
+
     // get the project by project name property and then append the item to that project's itemsArray
     let projectDiv = document.getElementById(project);
-    projectDiv.append(checkbox,itemDiv);
+    projectDiv.append(container);
 
     // expand itemDiv when expandArrow is clicked
     expandArrow.addEventListener("click", (event) => {
