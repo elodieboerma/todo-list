@@ -32,7 +32,7 @@ newProjectButton.addEventListener("click", (event) => {
 newTaskButton.addEventListener("click", (event) => {
     event.preventDefault();
     showNewItemForm((data) => {
-        addItem(
+        addItemToDom(
             data.title,
             data.description,
             data.checklist,

@@ -205,17 +205,17 @@ export function addItemToDom(title,description,checklist,dueDate,priority,projec
     checkbox.type = "checkbox";
 
     const itemDiv = document.createElement("div");
-    itemDiv.id = "itemDiv";
+    itemDiv.id = title;
     itemDiv.textContent = "itemDiv";
     itemDiv.classList.add("itemDiv");
 
     const itemTitle = document.createElement("p");
-    itemTitle.id = title;
+    itemTitle.id = "title";
     itemTitle.textContent = title;
     itemDiv.appendChild(itemTitle);
 
     const itemDueDate = document.createElement("p");
-    itemDueDate.id = dueDate;
+    itemDueDate.id = "dueDate";
     itemDueDate.textContent = dueDate;
     itemDiv.appendChild(itemDueDate);
 
@@ -240,27 +240,33 @@ export function addItemToDom(title,description,checklist,dueDate,priority,projec
     // expand itemDiv when expandArrow is clicked
     expandArrow.addEventListener("click", (event) => {
         event.preventDefault();
-        expandItemDiv(itemDiv,description,checklist,priority);
+        expandItemDiv(itemDiv,title,description,checklist,dueDate,priority,project);
     });
 }
 
 
 
 // expand itemDiv to show details and editing options
-export function expandItemDiv(itemDiv,description,checklist,priority) {
+export function expandItemDiv(itemDiv,title,description,checklist,dueDate,priority,project) {
 
     const itemDescription = document.createElement("p");
-    itemDescription.id = description;
+    itemDescription.id = "description";
     itemDescription.textContent = description;
 
     const itemChecklist = document.createElement("p");
-    itemChecklist.id = checklist;
+    itemChecklist.id = "checklist";
     itemChecklist.textContent = checklist;
 
     const itemPriority = document.createElement("p");
-    itemPriority.id = priority;
+    itemPriority.id = "priority";
     itemPriority.textContent = priority;
 
+    // find the item in projectList whose title matches the title of the item last expanded
+    const item = projectList.find(p => 
+        p.projectName === project)
+            .itemsArray.find(
+                i => i.title === title
+    );
 
     // button to edit task
     const editButton = document.createElement("button");
@@ -269,7 +275,6 @@ export function expandItemDiv(itemDiv,description,checklist,priority) {
     editButton.addEventListener("click", (event) => {
         event.preventDefault();
 
-        const itemIndex = projectList.indexOf(item);
         itemDiv.style.backgroundColor = "lightgray";
         
         showNewItemForm((data) => {
