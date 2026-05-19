@@ -190,6 +190,8 @@ export function showNewItemForm(onSubmit, item=null) {
 
 
 
+
+
 // add item to dom tree
 export function addItemToDom(title,description,checklist,dueDate,priority,project) {
 
@@ -245,6 +247,8 @@ export function addItemToDom(title,description,checklist,dueDate,priority,projec
 
 
 
+
+
 // expand itemDiv to show details and editing options
 export function expandItemDiv(container,itemDiv,title,description,checklist,dueDate,priority,project) {
 
@@ -263,10 +267,22 @@ export function expandItemDiv(container,itemDiv,title,description,checklist,dueD
                 i => i.title === title
     );
 
+    itemDiv.append(itemDescription,itemChecklist);
+
+    addEditButton(container,itemDiv,item);
+
+    addDeleteButton(container,itemDiv,item);
+
+}
+
+
+
+function addEditButton(container,itemDiv,item) {
     // button to edit task
     const editButton = document.createElement("button");
     editButton.id = "editButton";
     editButton.textContent = "Edit";
+    itemDiv.appendChild(editButton);
     editButton.addEventListener("click", (event) => {
         event.preventDefault();
 
@@ -296,12 +312,16 @@ export function expandItemDiv(container,itemDiv,title,description,checklist,dueD
             );
         }, item);
     })
+}
 
 
+
+function addDeleteButton(container,itemDiv,item) {
     // button to delete task
     const deleteButton = document.createElement("button");
     deleteButton.id = "deleteButton";
     deleteButton.textContent = "Delete";
+    itemDiv.appendChild(deleteButton);
     deleteButton.addEventListener("click", (event) => {
         event.preventDefault();
         const itemIndex = projectList.indexOf(item);
@@ -310,7 +330,4 @@ export function expandItemDiv(container,itemDiv,title,description,checklist,dueD
         project.itemsArray.splice(index, 1);
         container.remove();
     })
-
-    itemDiv.append(itemDescription,itemChecklist,editButton,deleteButton);
-
 }
