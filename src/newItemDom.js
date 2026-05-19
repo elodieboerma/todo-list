@@ -200,11 +200,7 @@ export function addItemToDom(title,description,checklist,dueDate,priority,projec
     const container = document.createElement("div");
     container.id = "container";
 
-    // box to check off task when complete
-    let checkbox = document.createElement("input");
-    checkbox.id = "checkbox";
-    checkbox.name = "checkbox";
-    checkbox.type = "checkbox";
+    addCheckbox(container,title,project);
 
     const itemDiv = document.createElement("div");
     itemDiv.id = title;
@@ -232,7 +228,7 @@ export function addItemToDom(title,description,checklist,dueDate,priority,projec
     expandArrow.textContent = ">>";
     itemDiv.appendChild(expandArrow);
 
-    container.append(checkbox,itemDiv);
+    container.appendChild(itemDiv);
 
     // get the project by project name property and then append the item to that project's itemsArray
     let projectDiv = document.getElementById(project);
@@ -242,6 +238,28 @@ export function addItemToDom(title,description,checklist,dueDate,priority,projec
     expandArrow.addEventListener("click", (event) => {
         event.preventDefault();
         expandItemDiv(container,itemDiv,title,description,checklist,dueDate,priority,project);
+    });
+}
+
+function addCheckbox(container,title,project) {
+    let checkbox = document.createElement("input");
+
+    const item = projectList.find(
+        p => p.projectName === project)?.
+            itemsArray.find(i => i.title === title
+    );
+    checkbox.checked = item ? item.completed : false;
+
+    checkbox.id = "checkbox";
+    checkbox.name = "checkbox";
+    checkbox.type = "checkbox";
+
+    container.appendChild(checkbox);
+
+    checkbox.addEventListener("change", () => {
+        if (item) {
+            item.completed = checkbox.checked;
+        }
     });
 }
 
@@ -278,7 +296,6 @@ export function expandItemDiv(container,itemDiv,title,description,checklist,dueD
 
 
 function addEditButton(container,itemDiv,item) {
-    // button to edit task
     const editButton = document.createElement("button");
     editButton.id = "editButton";
     editButton.textContent = "Edit";
