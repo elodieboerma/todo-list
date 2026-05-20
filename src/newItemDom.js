@@ -234,12 +234,12 @@ export function addItemToDom(title,description,checklist,dueDate,priority,projec
     let projectDiv = document.getElementById(project);
     projectDiv.append(container);
 
-    const expanded = false;
+    itemDiv.dataset.expanded = "false";
 
     // expand itemDiv when expandArrow is clicked
     expandArrow.addEventListener("click", (event) => {
         event.preventDefault();
-        expandItemDiv(container,itemDiv,expandArrow,expanded,title,description,checklist,dueDate,priority,project);
+        expandItemDiv(container,itemDiv,expandArrow,title,description,checklist,dueDate,priority,project);
     });
 }
 
@@ -270,10 +270,12 @@ function addCheckbox(container,item) {
 
 
 // expand itemDiv to show details and editing options
-export function expandItemDiv(container,itemDiv,expandArrow,expanded,title,description,checklist,dueDate,
+export function expandItemDiv(container,itemDiv,expandArrow,title,description,checklist,dueDate,
     priority,project) {
 
-    if (expanded === false) {
+    const expanded = itemDiv.dataset.expanded === "true";
+
+    if (!expanded) {
         expandArrow.remove();
 
         const itemDescription = document.createElement("p");
@@ -298,21 +300,21 @@ export function expandItemDiv(container,itemDiv,expandArrow,expanded,title,descr
 
         expandArrow.textContent = "‸";
         itemDiv.appendChild(expandArrow);
-        expanded === true;
-    } else if (expanded === true)  {
+        itemDiv.dataset.expanded = "true";
+    } else if (expanded)  {
         const itemDescription = itemDiv.querySelector("#description");
         const itemChecklist = itemDiv.querySelector("#checklist");
         const editButton = itemDiv.querySelector("#editButton");
         const deleteButton = itemDiv.querySelector("#deleteButton");
 
-        itemDescription.remove();
-        itemChecklist.remove();
-        editButton.remove();
-        deleteButton.remove();
-        expandArrow.textContent = "⌄";
-        expanded === false;
-    }
+        itemDescription?.remove();
+        itemChecklist?.remove();
+        editButton?.remove();
+        deleteButton?.remove();
 
+        expandArrow.textContent = "⌄";
+        itemDiv.dataset.expanded = "false";
+    }
 }
 
 
