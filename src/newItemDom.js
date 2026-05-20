@@ -159,7 +159,7 @@ export function showNewItemForm(onSubmit, item=null) {
     addNew.type = "submit";
     addNew.id = "addNewButton";
     addNew.name = "addNewButton";
-    addNew.value = "Create";
+    addNew.value = !item ? "Create" : "Update";
 
     form.append(inputFields,addNew);
     document.body.appendChild(form);
