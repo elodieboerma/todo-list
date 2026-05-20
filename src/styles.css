@@ -124,6 +124,24 @@ input[type="radio"] {
     font-weight: bold;
 }
 
+/* on projectDivs */
+.editButton {
+    font-size: 0.6rem;
+    padding: 0.1rem;
+    border: black solid 0.5px;
+}
+
+.buttonDiv {
+    margin-left: auto;
+}
+
+.buttonDiv,
+.headerDiv {
+    display: flex;
+    align-items: center;
+}
+
+/* on itemDivs */
 #container {
     display: flex;
 }

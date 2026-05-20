@@ -57,25 +57,42 @@ export function addProjectToDom(projectName) {
 
     const headerDiv = document.createElement("div");
     headerDiv.textContent = projectName;
-    headerDiv.style.display = "flex";
-    addDeleteButton(projectName,headerDiv,projectDiv);
+    headerDiv.classList.add("headerDiv");
+
+    const buttonDiv = document.createElement("div");
+    buttonDiv.classList.add("buttonDiv");
+    addEditButton(projectName,buttonDiv,projectDiv);
+    addDeleteButton(projectName,buttonDiv,headerDiv,projectDiv);
+    headerDiv.appendChild(buttonDiv);
     projectDiv.appendChild(headerDiv);
 
     listContainer.append(projectDiv);
 
 }
 
-function addDeleteButton(projectName,headerDiv,projectDiv) {
+function addEditButton(projectName,buttonDiv,projectDiv) {
+    const editButton = document.createElement("button");
+    editButton.classList.add("editButton");
+    editButton.textContent = "Rename";
+    buttonDiv.appendChild(editButton);
+    editButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        const project = projectList.projectName;
+        
+    })
+}
+
+function addDeleteButton(projectName,buttonDiv,headerDiv,projectDiv) {
     const deleteButton = document.createElement("div");
     deleteButton.id = "deleteButton";
     deleteButton.textContent = "⊗";
     deleteButton.style.marginLeft = "0.5rem";
-    headerDiv.appendChild(deleteButton);
+    buttonDiv.appendChild(deleteButton);
     deleteButton.addEventListener("click", (event) => {
         event.preventDefault();
         const projectIndex = projectList.indexOf(projectName);
         projectList.splice(projectIndex, 1);
         projectDiv.remove();
-        deleteButton.remove();
+        headerDiv.remove();
     })
 }
