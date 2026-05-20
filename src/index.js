@@ -1,7 +1,7 @@
 import "./styles.css";
-import {addItemToDom, showNewItemForm} from "./newItemDom.js";
+import {showNewItemForm, addItemToDom} from "./newItemDom.js";
 import {Project} from "./newProject.js";
-import {showNewProjectForm} from "./newProjectDom.js";
+import {showNewProjectForm, addProjectToDom} from "./newProjectDom.js";
 
 export let projectList = [];
 
@@ -23,7 +23,9 @@ listContainer.appendChild(defaultProjectDiv);
 // add new project to list of projects
 newProjectButton.addEventListener("click", (event) => {
     event.preventDefault();
-    showNewProjectForm();
+    showNewProjectForm((data) => {
+        addProjectToDom(data.projectName);
+    });
 })
 
 

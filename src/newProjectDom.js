@@ -6,7 +6,7 @@ const listContainer = document.getElementById("list");
 
 
 // create the form and directs its inputs to addProjectToList() to create the new project
-export function showNewProjectForm() {
+export function showNewProjectForm(onSubmit,project=null) {
 
     if (document.body.querySelector("form")) {
         return;
@@ -23,6 +23,7 @@ export function showNewProjectForm() {
     input.id = "name";
     input.name = "name";
     input.type = "text";
+    input.value = project ? project.projectName : "";
     input.required = true;
     box.append(label,input);
 
@@ -31,7 +32,7 @@ export function showNewProjectForm() {
     addNewProject.type = "submit";
     addNewProject.id = "addNewProject";
     addNewProject.name = "addNewProject";
-    addNewProject.value = "Create";
+    addNewProject.value = project ? "Rename" : "Create";
     form.append(box,addNewProject);
 
     document.body.appendChild(form);
@@ -39,7 +40,13 @@ export function showNewProjectForm() {
 
     addNewProject.addEventListener("click", function (event) {
         event.preventDefault();
-        addProjectToDom(input.value);
+
+        const data = {
+            projectName: input.value
+        };
+
+        onSubmit(data);
+
         form.remove();
     });
 
@@ -47,40 +54,68 @@ export function showNewProjectForm() {
 
 
 
-export function addProjectToDom(projectName) {
 
-    addProjectToList(projectName);
+
+export function addProjectToDom(data) {
+
+    addProjectToList(data.projectName);
 
     const projectDiv = document.createElement("div");
-    projectDiv.id = projectName;
+    projectDiv.id = data.projectName;
     projectDiv.classList.add("projectDiv");
 
     const headerDiv = document.createElement("div");
-    headerDiv.textContent = projectName;
     headerDiv.classList.add("headerDiv");
+
+    // separate title element
+    const titleSpan = document.createElement("span");
+    titleSpan.classList.add("projectTitle");
+    titleSpan.textContent = data.projectName;
 
     const buttonDiv = document.createElement("div");
     buttonDiv.classList.add("buttonDiv");
-    addEditButton(projectName,buttonDiv,projectDiv);
-    addDeleteButton(projectName,buttonDiv,headerDiv,projectDiv);
-    headerDiv.appendChild(buttonDiv);
+
+    addEditButton(data.projectName,buttonDiv,headerDiv,projectDiv);
+    addDeleteButton(data.projectName,buttonDiv,headerDiv,projectDiv);
+
+    headerDiv.append(titleSpan,buttonDiv);
     projectDiv.appendChild(headerDiv);
 
     listContainer.append(projectDiv);
 
 }
 
-function addEditButton(projectName,buttonDiv,projectDiv) {
+
+
+function addEditButton(projectName,buttonDiv,headerDiv,projectDiv) {
     const editButton = document.createElement("button");
     editButton.classList.add("editButton");
     editButton.textContent = "Rename";
     buttonDiv.appendChild(editButton);
+
     editButton.addEventListener("click", (event) => {
         event.preventDefault();
-        const project = projectList.projectName;
-        
-    })
+
+        projectDiv.style.borderStyle = "dashed";
+
+        const project = projectList.find(
+            p => p.projectName === projectDiv.id
+        );
+
+        showNewProjectForm((data) => {
+            project.projectName = data.projectName;
+
+            projectDiv.id = data.projectName;
+
+            const titleSpan = headerDiv.querySelector(".projectTitle");
+            titleSpan.textContent = data.projectName;
+
+            projectDiv.style.borderStyle = "solid";
+        });
+    });
 }
+
+
 
 function addDeleteButton(projectName,buttonDiv,headerDiv,projectDiv) {
     const deleteButton = document.createElement("div");
@@ -88,9 +123,12 @@ function addDeleteButton(projectName,buttonDiv,headerDiv,projectDiv) {
     deleteButton.textContent = "⊗";
     deleteButton.style.marginLeft = "0.5rem";
     buttonDiv.appendChild(deleteButton);
+
     deleteButton.addEventListener("click", (event) => {
         event.preventDefault();
-        const projectIndex = projectList.indexOf(projectName);
+        const projectIndex = projectList.findIndex(
+            p => p.projectName === projectName
+        );
         projectList.splice(projectIndex, 1);
         projectDiv.remove();
         headerDiv.remove();

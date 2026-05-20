@@ -324,6 +324,7 @@ function addEditButton(container,itemDiv,item) {
     editButton.id = "editButton";
     editButton.textContent = "Edit";
     itemDiv.appendChild(editButton);
+
     editButton.addEventListener("click", (event) => {
         event.preventDefault();
 
@@ -363,6 +364,7 @@ function addDeleteButton(container,itemDiv,item) {
     deleteButton.id = "deleteButton";
     deleteButton.textContent = "Delete";
     itemDiv.appendChild(deleteButton);
+    
     deleteButton.addEventListener("click", (event) => {
         event.preventDefault();
         const itemIndex = projectList.indexOf(item);
